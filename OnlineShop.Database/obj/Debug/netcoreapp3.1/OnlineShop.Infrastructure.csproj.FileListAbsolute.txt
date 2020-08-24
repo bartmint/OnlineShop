@@ -1,0 +1,15 @@
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\bin\Debug\netcoreapp3.1\OnlineShop.Domain.dll
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3.1\OnlineShop.Infrastructure.csprojAssemblyReference.cache
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3.1\OnlineShop.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3.1\OnlineShop.Infrastructure.AssemblyInfo.cs
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\bin\Debug\netcoreapp3.1\OnlineShop.Infrastructure.deps.json
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\bin\Debug\netcoreapp3.1\OnlineShop.Infrastructure.runtimeconfig.json
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\bin\Debug\netcoreapp3.1\OnlineShop.Infrastructure.runtimeconfig.dev.json
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\bin\Debug\netcoreapp3.1\OnlineShop.Infrastructure.dll
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\bin\Debug\netcoreapp3.1\OnlineShop.Infrastructure.pdb
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\bin\Debug\netcoreapp3.1\OnlineShop.Domain.pdb
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3.1\OnlineShop.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3.1\OnlineShop.Infrastructure.csproj.CopyComplete
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3.1\OnlineShop.Infrastructure.dll
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3.1\OnlineShop.Infrastructure.pdb
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3.1\OnlineShop.Infrastructure.genruntimeconfig.cache

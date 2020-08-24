@@ -1,0 +1,9 @@
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Application\bin\Debug\netcoreapp3.1\OnlineShop.Application.deps.json
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Application\bin\Debug\netcoreapp3.1\OnlineShop.Application.dll
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Application\bin\Debug\netcoreapp3.1\OnlineShop.Application.pdb
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Application\obj\Debug\netcoreapp3.1\OnlineShop.Application.csprojAssemblyReference.cache
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Application\obj\Debug\netcoreapp3.1\OnlineShop.Application.AssemblyInfoInputs.cache
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Application\obj\Debug\netcoreapp3.1\OnlineShop.Application.AssemblyInfo.cs
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Application\obj\Debug\netcoreapp3.1\OnlineShop.Application.csproj.CoreCompileInputs.cache
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Application\obj\Debug\netcoreapp3.1\OnlineShop.Application.dll
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Application\obj\Debug\netcoreapp3.1\OnlineShop.Application.pdb
