@@ -16,7 +16,15 @@ namespace OnlineShop.Infrastructure.DAL
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+            //builder.Seed();
+
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<ShoppingCartItem> CartItems { get; set; }
+        public DbSet<ProductQuantity> ProductQuantities { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+        public DbSet<Image> Images { get; set; }
+
     }
 }

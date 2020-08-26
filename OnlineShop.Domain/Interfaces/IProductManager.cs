@@ -13,8 +13,7 @@ namespace OnlineShop.Domain.Interfaces
         Task<int> DeleteProduct(Product product);
         Task<int> UpdateProduct(Product product);
         Product GetProductById(int id);
-        // albo IQueryable<Product> ProductsQ { get; }
-        IQueryable<Product> ProductsQ();
+        IEnumerable<Product> ProductsE();
 
 
 

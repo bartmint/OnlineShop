@@ -85,3 +85,7 @@ C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\Humani
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\OnlineShop.UI.csproj.CoreCompileInputs.cache
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\OnlineShop.UI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll

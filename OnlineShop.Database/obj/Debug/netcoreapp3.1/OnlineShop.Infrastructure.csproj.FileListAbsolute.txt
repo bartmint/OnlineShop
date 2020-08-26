@@ -11,5 +11,5 @@ C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3
 C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3.1\OnlineShop.Infrastructure.pdb
 C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\bin\Debug\netcoreapp3.1\OnlineShop.Infrastructure.runtimeconfig.json
 C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\bin\Debug\netcoreapp3.1\OnlineShop.Infrastructure.runtimeconfig.dev.json
-C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3.1\OnlineShop.Infrastructure.csproj.CoreCompileInputs.cache
 C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3.1\OnlineShop.Infrastructure.genruntimeconfig.cache
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Database\obj\Debug\netcoreapp3.1\OnlineShop.Infrastructure.csproj.CoreCompileInputs.cache
