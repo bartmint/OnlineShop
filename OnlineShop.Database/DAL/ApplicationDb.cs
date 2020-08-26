@@ -13,6 +13,10 @@ namespace OnlineShop.Infrastructure.DAL
         {
 
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+        }
         public DbSet<Product> Products { get; set; }
     }
 }

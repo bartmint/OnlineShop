@@ -6,8 +6,8 @@ namespace OnlineShop.Domain.Models
 {
     public class Image
     {
-        int Id { get; set; }
-        int ProductId { get; set; }
-        string Path { get; set; }
+        public int Id { get; set; }
+        public int ProductId { get; set; }
+        public string Path { get; set; }
     }
 }

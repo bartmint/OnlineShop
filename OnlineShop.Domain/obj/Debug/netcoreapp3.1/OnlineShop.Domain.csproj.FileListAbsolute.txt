@@ -1,9 +1,9 @@
 C:\Users\barte\source\repos\OnlineShop\OnlineShop.Domain\bin\Debug\netcoreapp3.1\OnlineShop.Domain.deps.json
 C:\Users\barte\source\repos\OnlineShop\OnlineShop.Domain\bin\Debug\netcoreapp3.1\OnlineShop.Domain.dll
 C:\Users\barte\source\repos\OnlineShop\OnlineShop.Domain\bin\Debug\netcoreapp3.1\OnlineShop.Domain.pdb
-C:\Users\barte\source\repos\OnlineShop\OnlineShop.Domain\obj\Debug\netcoreapp3.1\OnlineShop.Domain.csprojAssemblyReference.cache
 C:\Users\barte\source\repos\OnlineShop\OnlineShop.Domain\obj\Debug\netcoreapp3.1\OnlineShop.Domain.AssemblyInfoInputs.cache
 C:\Users\barte\source\repos\OnlineShop\OnlineShop.Domain\obj\Debug\netcoreapp3.1\OnlineShop.Domain.AssemblyInfo.cs
 C:\Users\barte\source\repos\OnlineShop\OnlineShop.Domain\obj\Debug\netcoreapp3.1\OnlineShop.Domain.csproj.CoreCompileInputs.cache
 C:\Users\barte\source\repos\OnlineShop\OnlineShop.Domain\obj\Debug\netcoreapp3.1\OnlineShop.Domain.dll
 C:\Users\barte\source\repos\OnlineShop\OnlineShop.Domain\obj\Debug\netcoreapp3.1\OnlineShop.Domain.pdb
+C:\Users\barte\source\repos\OnlineShop\OnlineShop.Domain\obj\Debug\netcoreapp3.1\OnlineShop.Domain.csprojAssemblyReference.cache
