@@ -1,20 +1,15 @@
 ﻿using FluentAssertions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
 using Moq;
 using OnlineShop.Domain.Interfaces;
 using OnlineShop.Infrastructure.Repositories;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Tests
 {
-    
+
     public class ProductImageRepositoryTest
     {
         [Fact]

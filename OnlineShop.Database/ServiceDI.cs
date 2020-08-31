@@ -1,15 +1,17 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using OnlineShop.Domain.Interfaces;
+using OnlineShop.Infrastructure.Repositories;
 
 namespace OnlineShop.Infrastructure
 {
-    public class ServiceDI
+    public static class ServiceDI
     {
-        public ServiceDI(IServiceCollection services)
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            //services.
+            services.AddTransient<IProductManager, ProductManagerRepository>();
+            services.AddTransient<IProductImageRepository, ProductImageRepository>();
+
+            return services;
         }
     }
 }

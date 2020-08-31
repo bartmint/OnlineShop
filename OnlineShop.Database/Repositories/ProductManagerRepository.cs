@@ -2,10 +2,8 @@
 using OnlineShop.Domain.Interfaces;
 using OnlineShop.Domain.Models;
 using OnlineShop.Infrastructure.DAL;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace OnlineShop.Infrastructure.Repositories
@@ -18,11 +16,11 @@ namespace OnlineShop.Infrastructure.Repositories
         {
             _ctx = ctx;
         }
-        public Task<int> CreateProduct(Product product)
+        public async Task<int> CreateProduct(Product product)
         {
-            _ctx.Products.Add(product);
-
-            return _ctx.SaveChangesAsync();
+            await _ctx.Products.AddAsync(product);
+            await _ctx.SaveChangesAsync();
+            return product.Id;
         }
 
         public Task<int> DeleteProduct(Product product)

@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OnlineShop.Domain.Models
+﻿namespace OnlineShop.Domain.Models
 {
-   public class Ammount
+    public class Ammount
     {
         public int Id { get; set; }
         public int Quantity { get; set; }

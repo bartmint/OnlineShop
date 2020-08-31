@@ -1,6 +1,3 @@
-using Microsoft.AspNetCore.Hosting;
-using System;
-
 namespace OnlineShop.Models
 {
     public class ErrorViewModel

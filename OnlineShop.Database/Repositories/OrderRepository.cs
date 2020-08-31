@@ -2,9 +2,6 @@
 using OnlineShop.Domain.Models;
 using OnlineShop.Infrastructure.DAL;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OnlineShop.Infrastructure.Repositories
 {
@@ -35,9 +32,9 @@ namespace OnlineShop.Infrastructure.Repositories
 
                     Price = item.Product.Value
                 };
-                 _ctx.OrderDetails.AddAsync(orderDetail);
+                _ctx.OrderDetails.AddAsync(orderDetail);
             }
-             _ctx.SaveChangesAsync();
+            _ctx.SaveChangesAsync();
         }
     }
 }

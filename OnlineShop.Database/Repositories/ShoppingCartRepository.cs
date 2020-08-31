@@ -7,7 +7,7 @@ using OnlineShop.Infrastructure.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Threading.Tasks;
 
 namespace OnlineShop.Infrastructure.Repositories
 {
@@ -29,10 +29,10 @@ namespace OnlineShop.Infrastructure.Repositories
             string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
 
             session.SetString("CartId", cartId);
-            return new ShoppingCartRepository(context) { ShoppingCartId=cartId };
+            return new ShoppingCartRepository(context) { ShoppingCartId = cartId };
 
         }
-        public void AddToCart(Product product, int quantity)
+        public async Task AddToCart(Product product, int quantity)
         {
             var shoppingCartItem =
                 _ctx.CartItems.SingleOrDefault(
@@ -47,23 +47,23 @@ namespace OnlineShop.Infrastructure.Repositories
                     Product = product,
                     Quantity = quantity
                 };
-                _ctx.CartItems.Add(shoppingCartItem);
+                await _ctx.CartItems.AddAsync(shoppingCartItem);
             }
             else
             {
                 shoppingCartItem.Quantity++;
             }
-            _ctx.SaveChanges();
+           await _ctx.SaveChangesAsync();
         }
 
-        public void ClearCart()
+        public async Task ClearCart()
         {
-             var cartItems = _ctx
-                .CartItems
-                .Where(s => s.ShoppingCartId == ShoppingCartId);
+            var cartItems = _ctx
+               .CartItems
+               .Where(s => s.ShoppingCartId == ShoppingCartId);
             _ctx.CartItems.RemoveRange(cartItems);
 
-            _ctx.SaveChanges();
+            await _ctx.SaveChangesAsync();
         }
 
         public Product FindProduct(int productId)
@@ -91,7 +91,7 @@ namespace OnlineShop.Infrastructure.Repositories
             return total;
         }
 
-        public int RemoveFromCart(Product product)
+        public async Task<int> RemoveFromCart(Product product)
         {
             var shoppingCartItem =
                 _ctx.CartItems.SingleOrDefault(
@@ -112,7 +112,7 @@ namespace OnlineShop.Infrastructure.Repositories
 
             }
 
-            _ctx.SaveChanges();
+            await _ctx.SaveChangesAsync();
             return localAmount;
         }
     }

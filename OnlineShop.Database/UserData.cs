@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OnlineShop.Infrastructure
 {
-    public class UserData:IdentityUser
+    public class UserData : IdentityUser
     {
 
         public string City { get; set; }

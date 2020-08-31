@@ -1,8 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OnlineShop.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OnlineShop.Infrastructure.DAL
 {
@@ -18,7 +15,6 @@ namespace OnlineShop.Infrastructure.DAL
                     Model = "Hp",
                     System = "Windows10",
                     CPU = "Ryzen 5-3600",
-                    RamMemorry = "8",
                     HardDrive = "2",
                     Weight = "2",
                     GraphicCard = "nvidia 2060",
@@ -34,7 +30,6 @@ namespace OnlineShop.Infrastructure.DAL
                     Model = "Hp",
                     System = "Windows10",
                     CPU = "Ryzen 5-3600",
-                    RamMemorry = "8",
                     HardDrive = "2",
                     Weight = "2",
                     GraphicCard = "nvidia 2060",
@@ -50,7 +45,6 @@ namespace OnlineShop.Infrastructure.DAL
                     Model = "Hp",
                     System = "Windows10",
                     CPU = "Ryzen 5-3600",
-                    RamMemorry = "8",
                     HardDrive = "2",
                     Weight = "2",
                     GraphicCard = "nvidia 2060",

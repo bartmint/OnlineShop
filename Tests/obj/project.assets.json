@@ -8905,9 +8905,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\barte\\source\\repos\\OnlineShop\\Tests\\Tests.csproj",
-      "projectName": "Tests",
-      "projectPath": "C:\\Users\\barte\\source\\repos\\OnlineShop\\Tests\\Tests.csproj",
+      "projectUniqueName": "C:\\Users\\barte\\source\\repos\\OnlineShop\\Tests\\OnlineShop.Tests.csproj",
+      "projectName": "OnlineShop.Tests",
+      "projectPath": "C:\\Users\\barte\\source\\repos\\OnlineShop\\Tests\\OnlineShop.Tests.csproj",
       "packagesPath": "C:\\Users\\barte\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\barte\\source\\repos\\OnlineShop\\Tests\\obj\\",
       "projectStyle": "PackageReference",

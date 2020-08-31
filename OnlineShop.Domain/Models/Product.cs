@@ -1,12 +1,9 @@
 ﻿using OnlineShop.Domain.Enums.ProductItems;
-using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace OnlineShop.Domain.Models
 {
-   public class Product
+    public class Product
     {
         public int Id { get; set; }
         //public string Name { get; set; } skasowac z bazy
@@ -15,7 +12,6 @@ namespace OnlineShop.Domain.Models
         public string Model { get; set; }
         public string System { get; set; }
         public string CPU { get; set; }
-        public string RamMemorry { get; set; }
         public string HardDrive { get; set; }
         public string Weight { get; set; }
         public string GraphicCard { get; set; }
@@ -28,8 +24,7 @@ namespace OnlineShop.Domain.Models
         public List<Image> Paths { get; set; }
         public Product()
         {
-            Paths= new List<Image>();
+            Paths = new List<Image>();
         }
-
     }
 }

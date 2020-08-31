@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace OnlineShop.Domain.Models
+﻿namespace OnlineShop.Domain.Models
 {
     public class ProductQuantity
     {

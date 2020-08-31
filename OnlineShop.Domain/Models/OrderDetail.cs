@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace OnlineShop.Domain.Models
+﻿namespace OnlineShop.Domain.Models
 {
     public class OrderDetail
     {
