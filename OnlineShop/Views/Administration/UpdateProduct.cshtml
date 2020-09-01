@@ -1,17 +1,16 @@
-﻿@model OnlineShop.Application.ViewModels.CreateProductViewModel
+﻿@model OnlineShop.Application.ViewModels.EditProductViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "UpdateProduct";
 }
 
-<h1>Index</h1>
-
-<h4>CreateProductViewModel</h4>
+<h1>Add new product</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateProduct" asp-controller="Home"  enctype="multipart/form-data" method="post">
-            <div asp-validation-summary="All" class="text-danger"></div>
+        <form asp-action="UpdateProduct" asp-controller="Administration" enctype="multipart/form-data" method="post">
+            <div asp-validation-summary="All"></div>
+            <input hidden asp-for="Id" />
             <div class="form-group">
                 <label asp-for="ProductionCompany" class="control-label"></label>
                 <div>
@@ -92,13 +91,11 @@
                 <input asp-for="Ammount" class="form-control" />
                 <span asp-validation-for="Ammount" class="text-danger"></span>
             </div>
-            <label asp-for="Images "></label>
-            <div class="custom-file">
-                <input multiple asp-for="Images" class="form control custom-file-input" />
-                <label class="custom-file-label">Choose file</label>
-                <span asp-validation-for="Images" class="text-danger"></span>
-            </div>
-            <button type="submit" asp-action="CreateProduct" asp-controller="Home">Create</button>
+            <button type="submit" asp-action="UpdateProduct" asp-controller="Administration">Create</button>
         </form>
     </div>
 </div>
+
+@section Scripts {
+   @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

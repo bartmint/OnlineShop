@@ -20,22 +20,10 @@ namespace OnlineShop.UI.Controllers
             _productManagerService = productManagerService;
         }
         [HttpGet]
-        public IActionResult CreateProduct()
+        public IActionResult Index()
         {
             return View();
         }
-        [HttpPut]
-        public async Task<IActionResult> CreateProduct(CreateProductViewModel product)
-        {
-            if (ModelState.IsValid)
-            {
-                int id=await _productManagerService.CreateProduct(product);
-                return RedirectToAction("Details", "Home", new { Id = id });
-            }
-            IEnumerable<ModelError> allErrors = ModelState.Values.SelectMany(v => v.Errors);
-            return Json(allErrors);
-        }
-    
         [HttpGet]
        // [Route("Szczegoly/{id}")] dziala
         public IActionResult Details(int id)
@@ -45,8 +33,7 @@ namespace OnlineShop.UI.Controllers
             {
                 return View(model);
             }
-            return Json("not found");
-
+            return View();
         }
     }
 }

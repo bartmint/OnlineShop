@@ -10,7 +10,7 @@ namespace OnlineShop.Infrastructure
         {
             services.AddTransient<IProductManager, ProductManagerRepository>();
             services.AddTransient<IProductImageRepository, ProductImageRepository>();
-
+            services.AddTransient<IAmmountRepository, AmmountRepository>();
             return services;
         }
     }

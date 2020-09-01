@@ -1,12 +1,11 @@
 ﻿using OnlineShop.Domain.Enums.ProductItems;
+using OnlineShop.Domain.Models.Common;
 using System.Collections.Generic;
 
 namespace OnlineShop.Domain.Models
 {
-    public class Product
+    public class Product: BaseEntity
     {
-        public int Id { get; set; }
-        //public string Name { get; set; } skasowac z bazy
         public string Description { get; set; }
         public decimal Value { get; set; }
         public string Model { get; set; }

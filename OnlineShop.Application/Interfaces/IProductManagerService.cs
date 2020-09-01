@@ -9,7 +9,8 @@ namespace OnlineShop.Application.Interfaces
 {
     public interface IProductManagerService
     {
-        Task<int> CreateProduct(CreateProductViewModel model);
+        Task<int> AddProduct(AddProductViewModel model);
+        int UpdateProduct(EditProductViewModel product);
         Product GetProduct(int id);
     }
 }

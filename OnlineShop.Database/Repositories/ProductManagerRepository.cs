@@ -34,7 +34,7 @@ namespace OnlineShop.Infrastructure.Repositories
 
         public Product GetProductById(int id)
         {
-            return _ctx.Products.Include(x => x.Paths).FirstOrDefault(p => p.Id == id);
+            return _ctx.Products.Include(x => x.Paths).Include(q=>q.Ammount).FirstOrDefault(p => p.Id == id);
         }
 
         public IEnumerable<Product> ProductsE()
@@ -42,10 +42,10 @@ namespace OnlineShop.Infrastructure.Repositories
             return _ctx.Products.Include(x => x.Paths);
         }
 
-        public Task<int> UpdateProduct(Product product)
+        public int UpdateProduct(Product product)
         {
             _ctx.Products.Update(product);
-            return _ctx.SaveChangesAsync();
+            return _ctx.SaveChanges();
         }
     }
 }

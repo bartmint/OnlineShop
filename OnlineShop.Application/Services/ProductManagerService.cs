@@ -13,13 +13,15 @@ namespace OnlineShop.Application.Services
     {
         private readonly IProductManager _productManager;
         private readonly IProductImageRepository _imageRepository;
+        private readonly IAmmountRepository _ammountRepository;
 
-        public ProductManagerService(IProductManager productManager, IProductImageRepository imageRepository)
+        public ProductManagerService(IProductManager productManager, IProductImageRepository imageRepository, IAmmountRepository ammountRepository)
         {
             _productManager = productManager;
             _imageRepository = imageRepository;
+            _ammountRepository = ammountRepository;
         }
-        public async Task<int> CreateProduct(CreateProductViewModel product)
+        public async Task<int> AddProduct(AddProductViewModel product)
         {
             Ammount quantity = new Ammount()
             {
@@ -58,6 +60,36 @@ namespace OnlineShop.Application.Services
         public Product GetProduct(int id)
         {
             return  _productManager.GetProductById(id);
+        }
+
+        public int UpdateProduct(EditProductViewModel product)
+        {
+            Ammount quantity = new Ammount()
+            {
+                Quantity = product.Ammount
+            };
+            _ammountRepository.DeleteProduct(product.Id);
+            Product model = new Product()
+            {
+                Id = product.Id,
+                ProductionCompany = product.ProductionCompany,
+                Model = product.Model,
+                System = product.System,
+                CPU = product.CPU,
+                MemoryType = product.MemoryType,
+                HardDrive = product.HardDrive,
+                Weight = product.Weight,
+                GraphicCard = product.GraphicCard,
+                Value = product.Value,
+                ProductionYear = product.ProductionYear,
+                ScreenResolution = product.ScreenResolution,
+                Description = product.Description,
+                Warranty = product.Warranty,
+                Ammount = quantity,
+                Paths = new List<Image>()
+            };
+            int id =_productManager.UpdateProduct(model);
+            return id;
         }
     }
 }

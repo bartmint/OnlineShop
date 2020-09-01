@@ -157,6 +157,18 @@ namespace OnlineShop.Infrastructure.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
+                    b.Property<DateTime>("CraetedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreatedById")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModeifiedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("ModifiedById")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -168,7 +180,7 @@ namespace OnlineShop.Infrastructure.Migrations
                     b.HasIndex("ProductId")
                         .IsUnique();
 
-                    b.ToTable("Ammount");
+                    b.ToTable("Ammmounts");
                 });
 
             modelBuilder.Entity("OnlineShop.Domain.Models.Image", b =>
@@ -285,6 +297,12 @@ namespace OnlineShop.Infrastructure.Migrations
                     b.Property<string>("CPU")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("CraetedDateTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("CreatedById")
+                        .HasColumnType("int");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
@@ -297,20 +315,20 @@ namespace OnlineShop.Infrastructure.Migrations
                     b.Property<int>("MemoryType")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("ModeifiedDateTime")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Model")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("ModifiedById")
+                        .HasColumnType("int");
 
                     b.Property<int>("ProductionCompany")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductionYear")
                         .HasColumnType("int");
-
-                    b.Property<string>("RamMemorry")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ScreenResolution")
                         .HasColumnType("nvarchar(max)");
@@ -330,26 +348,6 @@ namespace OnlineShop.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("OnlineShop.Domain.Models.ProductQuantity", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<int>("AmmountOfProduct")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("ProductQuantities");
                 });
 
             modelBuilder.Entity("OnlineShop.Domain.Models.ShoppingCartItem", b =>
@@ -535,15 +533,6 @@ namespace OnlineShop.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("OnlineShop.Domain.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("OnlineShop.Domain.Models.ProductQuantity", b =>
-                {
                     b.HasOne("OnlineShop.Domain.Models.Product", "Product")
                         .WithMany()
                         .HasForeignKey("ProductId")

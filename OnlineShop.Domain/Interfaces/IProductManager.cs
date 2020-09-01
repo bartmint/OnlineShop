@@ -8,7 +8,7 @@ namespace OnlineShop.Domain.Interfaces
     {
         Task<int> CreateProduct(Product product);
         Task<int> DeleteProduct(Product product);
-        Task<int> UpdateProduct(Product product);
+        int UpdateProduct(Product product);
         Product GetProductById(int id);
         IEnumerable<Product> ProductsE();
 

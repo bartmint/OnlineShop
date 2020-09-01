@@ -18,7 +18,7 @@ namespace OnlineShop.Infrastructure.DAL
         }
         public DbSet<Product> Products { get; set; }
         public DbSet<ShoppingCartItem> CartItems { get; set; }
-        public DbSet<ProductQuantity> ProductQuantities { get; set; }
+        public DbSet<Ammount> Ammmounts { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Image> Images { get; set; }

@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-using System;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace OnlineShop.Infrastructure.Migrations
 {
@@ -80,13 +80,15 @@ namespace OnlineShop.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CreatedById = table.Column<int>(type: "int", nullable: false),
+                    CraetedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedById = table.Column<int>(type: "int", nullable: true),
+                    ModeifiedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Value = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Model = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     System = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CPU = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    RamMemorry = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     HardDrive = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Weight = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     GraphicCard = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -208,19 +210,23 @@ namespace OnlineShop.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Ammount",
+                name: "Ammmounts",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    CreatedById = table.Column<int>(type: "int", nullable: false),
+                    CraetedDateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ModifiedById = table.Column<int>(type: "int", nullable: true),
+                    ModeifiedDateTime = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     ProductId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Ammount", x => x.Id);
+                    table.PrimaryKey("PK_Ammmounts", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Ammount_Products_ProductId",
+                        name: "FK_Ammmounts_Products_ProductId",
                         column: x => x.ProductId,
                         principalTable: "Products",
                         principalColumn: "Id",
@@ -296,29 +302,9 @@ namespace OnlineShop.Infrastructure.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "ProductQuantities",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AmmountOfProduct = table.Column<int>(type: "int", nullable: false),
-                    ProductId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProductQuantities", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProductQuantities_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
-                name: "IX_Ammount_ProductId",
-                table: "Ammount",
+                name: "IX_Ammmounts_ProductId",
+                table: "Ammmounts",
                 column: "ProductId",
                 unique: true);
 
@@ -380,17 +366,12 @@ namespace OnlineShop.Infrastructure.Migrations
                 name: "IX_OrderDetails_ProductId",
                 table: "OrderDetails",
                 column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProductQuantities_ProductId",
-                table: "ProductQuantities",
-                column: "ProductId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Ammount");
+                name: "Ammmounts");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
@@ -415,9 +396,6 @@ namespace OnlineShop.Infrastructure.Migrations
 
             migrationBuilder.DropTable(
                 name: "OrderDetails");
-
-            migrationBuilder.DropTable(
-                name: "ProductQuantities");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
