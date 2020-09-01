@@ -23,13 +23,11 @@ namespace OnlineShop.Infrastructure.Repositories
             return product.Id;
         }
 
-        public Task<int> DeleteProduct(Product product)
+        public int DeleteProduct(int id)
         {
-
-            var entity = _ctx.Products.FirstOrDefault(p => p.Id == product.Id);
+            var entity = _ctx.Products.FirstOrDefault(p => p.Id == id);
             _ctx.Products.Remove(entity);
-
-            return _ctx.SaveChangesAsync();
+            return _ctx.SaveChanges();
         }
 
         public Product GetProductById(int id)

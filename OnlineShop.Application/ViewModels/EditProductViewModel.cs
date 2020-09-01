@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using OnlineShop.Domain.Enums.ProductItems;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace OnlineShop.Application.ViewModels
 {

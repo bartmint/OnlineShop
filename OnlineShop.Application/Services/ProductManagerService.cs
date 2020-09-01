@@ -28,7 +28,6 @@ namespace OnlineShop.Application.Services
                 Quantity = product.Ammount
             };
             List<string> images = _imageRepository.AddPathToPhoto(product.Images);
-
             Product model = new Product()
             {
                 ProductionCompany = product.ProductionCompany,
@@ -104,6 +103,10 @@ namespace OnlineShop.Application.Services
             }
             int id =_productManager.UpdateProduct(model);
             return id;
+        }
+        public  void RemoveItem(int id)
+        {
+            _productManager.DeleteProduct(id);
         }
     }
 }

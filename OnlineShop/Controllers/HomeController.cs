@@ -33,7 +33,7 @@ namespace OnlineShop.UI.Controllers
             {
                 return View(model);
             }
-            return View();
+            return NotFound(404);
         }
     }
 }

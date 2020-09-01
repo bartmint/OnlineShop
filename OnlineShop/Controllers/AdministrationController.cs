@@ -22,6 +22,7 @@ namespace OnlineShop.UI.Controllers
         [HttpGet]
         public IActionResult AddProduct()
         {
+           
             return View();
         }
         [HttpPost]
@@ -49,6 +50,12 @@ namespace OnlineShop.UI.Controllers
                 return RedirectToAction("Details", "Home", new { Id = id });//narazie przekierowanie na index, bo na details powoduje nulla przy zdjeciach
             }
             return View();
+        }
+        [HttpGet]
+        public   IActionResult RemoveItem(int id)
+        {
+             _productManagerService.RemoveItem(id);
+            return RedirectToAction("Index", "Home");
         }
     }
 }

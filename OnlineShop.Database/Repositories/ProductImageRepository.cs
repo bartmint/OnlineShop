@@ -18,7 +18,6 @@ namespace OnlineShop.Infrastructure.Repositories
         {
             _hostEnvironment = host;
             _ctx = ctx;
-
         }
         public List<string> AddPathToPhoto(List<IFormFile> images)
         {
