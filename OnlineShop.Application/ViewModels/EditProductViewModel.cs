@@ -39,6 +39,11 @@ namespace OnlineShop.Application.ViewModels
 
         [Required(ErrorMessage = "Ammount field is required")]
         public int Ammount { get; set; }
+        public List<IFormFile> Images;
+        public EditProductViewModel()
+        {
+            Images = new List<IFormFile>();
+        }
        
     }
 }

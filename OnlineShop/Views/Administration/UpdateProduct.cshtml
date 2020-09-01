@@ -91,6 +91,12 @@
                 <input asp-for="Ammount" class="form-control" />
                 <span asp-validation-for="Ammount" class="text-danger"></span>
             </div>
+            <label asp-for="Images "></label>
+            <div class="custom-file">
+                <input multiple asp-for="Images" class="form control custom-file-input" />
+                <label class="custom-file-label">Choose file</label>
+                <span asp-validation-for="Images" class="text-danger"></span>
+            </div>
             <button type="submit" asp-action="UpdateProduct" asp-controller="Administration">Create</button>
         </form>
     </div>

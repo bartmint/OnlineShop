@@ -28,6 +28,7 @@ namespace OnlineShop.Application.Services
                 Quantity = product.Ammount
             };
             List<string> images = _imageRepository.AddPathToPhoto(product.Images);
+
             Product model = new Product()
             {
                 ProductionCompany = product.ProductionCompany,
@@ -69,6 +70,11 @@ namespace OnlineShop.Application.Services
                 Quantity = product.Ammount
             };
             _ammountRepository.DeleteProduct(product.Id);
+            List<string> images = _imageRepository.AddPathToPhoto(product.Images);
+            if (images.Count != 0)
+            {
+                _imageRepository.RemoveItems(product.Id);
+            }
             Product model = new Product()
             {
                 Id = product.Id,
@@ -88,6 +94,14 @@ namespace OnlineShop.Application.Services
                 Ammount = quantity,
                 Paths = new List<Image>()
             };
+            for (int i = 0; i < images.Count; i++)
+            {
+                var item = new Image()
+                {
+                    Path = images[i]
+                };
+                model.Paths.Add(item);
+            }
             int id =_productManager.UpdateProduct(model);
             return id;
         }
