@@ -70,7 +70,7 @@ namespace OnlineShop.Application.Services
             };
             if (quantity.Quantity != 0)
             {
-                _ammountRepository.DeleteProduct(product.Id);
+                await _ammountRepository.DeleteProduct(product.Id);
             }
             List<string> images = _imageRepository.AddPathToPhoto(product.Images);
             if (images.Count != 0)

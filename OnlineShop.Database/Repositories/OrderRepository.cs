@@ -2,27 +2,26 @@
 using OnlineShop.Domain.Models;
 using OnlineShop.Infrastructure.DAL;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OnlineShop.Infrastructure.Repositories
 {
     public class OrderRepository : IOrderRepository
     {
         private readonly ApplicationDb _ctx;
-        private readonly ShoppingCartRepository _shoppingCart;
-
-        public OrderRepository(ApplicationDb ctx, ShoppingCartRepository shoppingCart)
+        public OrderRepository(ApplicationDb ctx)
         {
             _ctx = ctx;
-            _shoppingCart = shoppingCart;
         }
-        public void CreateOrder(Order order)
+        public async Task CreateOrder(Order order, List<ShoppingCartItem> shoppingCartItems)
         {
             order.OrderPlaced = DateTime.Now;
-            _ctx.Orders.AddAsync(order);
+            _ctx.Orders.Add(order);
 
-            var shoppingCartItems = _shoppingCart.shoppingCartItems;
+            var mainShoppingCartItems = shoppingCartItems;
 
-            foreach (var item in shoppingCartItems)
+            foreach (var item in mainShoppingCartItems)
             {
                 var orderDetail = new OrderDetail()
                 {
@@ -32,9 +31,9 @@ namespace OnlineShop.Infrastructure.Repositories
 
                     Price = item.Product.Value
                 };
-                _ctx.OrderDetails.AddAsync(orderDetail);
+               await _ctx.OrderDetails.AddAsync(orderDetail);
             }
-            _ctx.SaveChangesAsync();
+           await _ctx.SaveChangesAsync();
         }
     }
 }

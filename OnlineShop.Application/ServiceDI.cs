@@ -10,7 +10,7 @@ namespace OnlineShop.Infrastructure
         public static IServiceCollection AddApplication(this IServiceCollection services)
         {
             services.AddTransient<IProductManagerService, ProductManagerService>();
-
+            services.AddTransient<IShoppingCartService, ShoppingCartService>();
             return services;
         }
     }

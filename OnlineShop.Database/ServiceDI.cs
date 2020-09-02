@@ -11,6 +11,8 @@ namespace OnlineShop.Infrastructure
             services.AddTransient<IProductManager, ProductManagerRepository>();
             services.AddTransient<IProductImageRepository, ProductImageRepository>();
             services.AddTransient<IAmmountRepository, AmmountRepository>();
+            services.AddScoped(sp => CartSessionRepository.GetCart(sp));
+            services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
             return services;
         }
     }

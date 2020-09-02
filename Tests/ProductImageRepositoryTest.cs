@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Moq;
 using OnlineShop.Domain.Interfaces;
+using OnlineShop.Infrastructure.DAL;
 using OnlineShop.Infrastructure.Repositories;
 using System.Collections.Generic;
 using Xunit;
@@ -29,8 +30,9 @@ namespace Tests
             var hostMockList = new Mock<IHostingEnvironment>();
             string roothPath = "C:\\Users\\barte\\source\\repos\\OnlineShop\\OnlineShop\\wwwroot";
             hostMockList.Setup(n => n.WebRootPath).Returns(roothPath);
-
-            IProductImageRepository repository = new ProductImageRepository(hostMockList.Object);
+            var hostDb = new Mock<ApplicationDb>();//trzeba zmienic sposob mockowania
+            
+            IProductImageRepository repository = new ProductImageRepository(hostMockList.Object,hostDb.Object);
             //Act
             var returnedPaths = repository.AddPathToPhoto(new List<IFormFile> { file1.Object, file2.Object });
             //Assert

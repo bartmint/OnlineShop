@@ -10,7 +10,7 @@ using OnlineShop.Infrastructure.DAL;
 namespace OnlineShop.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDb))]
-    [Migration("20200901155239_initial")]
+    [Migration("20200902105729_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

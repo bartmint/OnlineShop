@@ -14,24 +14,12 @@ namespace OnlineShop.Infrastructure.Repositories
     public class ShoppingCartRepository : IShoppingCartRepository
     {
         private readonly ApplicationDb _ctx;
-
         public ShoppingCartRepository(ApplicationDb ctx)
         {
             _ctx = ctx;
         }
         public string ShoppingCartId { get; set; }
-        public List<ShoppingCartItem> shoppingCartItems { get; set; }
-        public static ShoppingCartRepository GetCart(IServiceProvider service)
-        {
-            ISession session = service.GetRequiredService<IHttpContextAccessor>()?
-                .HttpContext.Session;//mozna tez wstrzyknac gotowy obiekt session przez konstruktor 
-            var context = service.GetService<ApplicationDb>();
-            string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
-
-            session.SetString("CartId", cartId);
-            return new ShoppingCartRepository(context) { ShoppingCartId = cartId };
-
-        }
+        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
         public async Task AddToCart(Product product, int quantity)
         {
             var shoppingCartItem =
@@ -74,8 +62,8 @@ namespace OnlineShop.Infrastructure.Repositories
 
         public List<ShoppingCartItem> GetShoppingCartItems()
         {
-            return shoppingCartItems ??
-               (shoppingCartItems =
+            return ShoppingCartItems ??
+               (ShoppingCartItems =
                _ctx.CartItems
                .Where(c => c.ShoppingCartId == ShoppingCartId)
                .Include(s => s.Product)
