@@ -43,7 +43,8 @@ namespace OnlineShop.Infrastructure.Repositories
         public int UpdateProduct(Product product)
         {
             _ctx.Products.Update(product);
-            return _ctx.SaveChanges();
+            _ctx.SaveChanges();
+            return product.Id;
         }
     }
 }
