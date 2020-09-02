@@ -41,11 +41,11 @@ namespace OnlineShop.UI.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult UpdateProduct(EditProductViewModel product)
+        public async Task<IActionResult> UpdateProduct(EditProductViewModel product)
         {
             if (ModelState.IsValid)
             {
-                int id = _productManagerService.UpdateProduct(product);
+                int id = await _productManagerService.UpdateProduct(product);
                 return RedirectToAction("Details", "Home", new { Id=id });//narazie przekierowanie na index, bo na details powoduje nulla przy zdjeciach
             }
             return View();

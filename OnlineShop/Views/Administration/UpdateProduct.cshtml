@@ -4,13 +4,12 @@
     ViewData["Title"] = "UpdateProduct";
 }
 
-<h1>Add new product</h1>
+<h1>Update product</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="UpdateProduct" asp-controller="Administration" enctype="multipart/form-data" method="post">
-            <div asp-validation-summary="All"></div>
-            <input hidden asp-for="Id" />
+        <form asp-action="UpdateProduct" asp-controller="Administration" enctype="multipart/form-data" name="input" method="post">
+            <div asp-validation-summary="All" />
             <div class="form-group">
                 <label asp-for="ProductionCompany" class="control-label"></label>
                 <div>
@@ -97,11 +96,8 @@
                 <label class="custom-file-label">Choose file</label>
                 <span asp-validation-for="Images" class="text-danger"></span>
             </div>
-            <button type="submit" asp-action="UpdateProduct" asp-controller="Administration">Create</button>
+            <button type="submit" asp-action="UpdateProduct" asp-controller="Administration">Update</button>
         </form>
     </div>
 </div>
 
-@section Scripts {
-   @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}

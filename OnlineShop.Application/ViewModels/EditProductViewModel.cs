@@ -7,6 +7,7 @@ namespace OnlineShop.Application.ViewModels
 {
     public class EditProductViewModel
     {
+        
         public int Id { get; set; }
         [Required(ErrorMessage = "Producent field is required")]
         public Producent ProductionCompany { get; set; }
@@ -34,14 +35,13 @@ namespace OnlineShop.Application.ViewModels
         public string Description { get; set; }
         [Required(ErrorMessage = "Warranty field is required")]
         public Varranty Warranty { get; set; }
-
-        [Required(ErrorMessage = "Ammount field is required")]
-        public int Ammount { get; set; }
-        public List<IFormFile> Images;
+        public List<IFormFile> Images { get; set; }
         public EditProductViewModel()
         {
             Images = new List<IFormFile>();
         }
-       
+        [Required(ErrorMessage = "Ammount field is required")]
+        public int Ammount { get; set; }
+        
     }
 }

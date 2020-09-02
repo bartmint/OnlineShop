@@ -27,7 +27,7 @@ namespace OnlineShop
             services.AddDbContext<ApplicationDb>(options =>
 
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")
-            ));
+            )/*, ServiceLifetime.Transient*/);
             services.AddInfrastructure();
             services.AddApplication();
 

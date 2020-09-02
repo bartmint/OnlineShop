@@ -10,7 +10,7 @@ namespace OnlineShop.Application.Interfaces
     public interface IProductManagerService
     {
         Task<int> AddProduct(AddProductViewModel model);
-        int UpdateProduct(EditProductViewModel product);
+        Task<int> UpdateProduct(EditProductViewModel product);
         Product GetProduct(int id);
         void RemoveItem(int id);
     }

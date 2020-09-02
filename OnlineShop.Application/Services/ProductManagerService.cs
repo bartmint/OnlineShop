@@ -62,13 +62,16 @@ namespace OnlineShop.Application.Services
             return  _productManager.GetProductById(id);
         }
 
-        public int UpdateProduct(EditProductViewModel product)
+        public async Task<int> UpdateProduct(EditProductViewModel product)
         {
             Ammount quantity = new Ammount()
             {
                 Quantity = product.Ammount
             };
-            _ammountRepository.DeleteProduct(product.Id);
+            if (quantity.Quantity != 0)
+            {
+                _ammountRepository.DeleteProduct(product.Id);
+            }
             List<string> images = _imageRepository.AddPathToPhoto(product.Images);
             if (images.Count != 0)
             {
@@ -101,7 +104,7 @@ namespace OnlineShop.Application.Services
                 };
                 model.Paths.Add(item);
             }
-            int id =_productManager.UpdateProduct(model);
+            int id =await _productManager.UpdateProduct(model);
             return id;
         }
         public  void RemoveItem(int id)

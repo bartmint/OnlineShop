@@ -40,10 +40,11 @@ namespace OnlineShop.Infrastructure.Repositories
             return _ctx.Products.Include(x => x.Paths);
         }
 
-        public int UpdateProduct(Product product)
+        public async Task<int> UpdateProduct(Product product)//zmiana na asynchroniczne pozwolilo na pozbycie sie bledu kiedy chcialem dwa razy
+                                                             //edytowac produkt, wywalalo blad ze korzysta podwojnie z db context
         {
             _ctx.Products.Update(product);
-            _ctx.SaveChanges();
+            await _ctx.SaveChangesAsync();
             return product.Id;
         }
     }

@@ -42,7 +42,6 @@ namespace OnlineShop.Application.ViewModels
         {
             Images = new List<IFormFile>();
         }
-        
 
     }
 }
