@@ -8,3 +8,4 @@
         DDR5
     }
 }
+// TODO: change later enums to class

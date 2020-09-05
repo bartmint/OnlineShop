@@ -1,71 +1,147 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+﻿/*font-family: 'Baloo 2', cursive;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Raleway', sans-serif;*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
+header {
+    display: flex;
+    width: 90%;
+    height: 10vh;
+    margin: auto;
+    align-items: center;
+    background-color:red;
 }
 
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+
+.logo-container, .nav-links, .cart {
+    display: flex;
 }
 
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+h4 {
+    line-height: 50px;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+.logo-container {
+    height: 80px;
+    width: 80px;
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
+nav {
+    flex: 2;
 }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.nav-links {
+    justify-content: space-around;
+    list-style: none;
 }
 
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+.nav-link {
+    color: #5f5f79;
+    font-size: 18px;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
+    .nav-link:hover {
+        color: #5f5f79;
+    }
+
+.cart {
+    justify-content: flex-end;
+    flex: 1;
 }
 
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    .cart > a {
+        text-decoration: none;
+        font-size: 21px;
+        color: #5f5f79;
+    }
+
+        .cart > a:hover {
+            text-decoration: none;
+        }
+
+    .cart > i {
+        color: #5f5f79;
+    }
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+
+p {
+    font-family: 'Baloo 2', cursive;
+}
+
+button {
+    font-family: 'Baloo 2', cursive;
+}
+
+#footer {
+    width: 100%;
+    background-color: #242925;
+    color: white;
+    height: 15vh;
+}
+
+.main {
+    min-height: calc(100vh - 15vh - 10vh);
+}
+
+#footer > .container {
+    display: flex;
+    align-content: center;
+    margin: auto;
+    height: 15vh;
+}
+
+.info {
+    margin: 20px 70px 0 0;
+    flex: 1;
+}
+
+.news {
+    margin: 20px 70px 0 0;
+    flex: 1;
+}
+
+.contact {
+    margin: 15.5px 0px 0px 0px;
+    flex: 1;
+}
+
+.footer_h {
+    font-size: 20px;
+}
+
+.footer_p {
+    font-size: 14px;
+}
+
+h2 {
+    margin-left: 10px;
+}
+
+.footer-links {
+    text-decoration: none;
+}
+
+    .footer-links > li {
+        height: 22px;
+        text-decoration: none;
+        color: white;
+        text-decoration: none;
+    }
+
+.footer_h > li > i {
+    display: inline-block;
+    color: white;
+}
+
+.nizej {
+    margin-top: 10px;
 }

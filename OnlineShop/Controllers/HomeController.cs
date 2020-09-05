@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using OnlineShop.Application.Interfaces;
@@ -18,22 +19,17 @@ namespace OnlineShop.UI.Controllers
         public HomeController(IProductManagerService productManagerService)
         {
             _productManagerService = productManagerService;
+
         }
+        
+
         [HttpGet]
         public IActionResult Index()
         {
+           
             return View();
         }
-        [HttpGet]
-       // [Route("Szczegoly/{id}")] dziala
-        public IActionResult Details(int id)
-        {
-            var model = _productManagerService.GetProduct(id);
-            if (model != null)
-            {
-                return View(model);
-            }
-            return NotFound(404);
-        }
+        
     }
+  
 }

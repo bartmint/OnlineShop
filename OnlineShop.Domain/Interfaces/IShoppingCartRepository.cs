@@ -9,9 +9,7 @@ namespace OnlineShop.Domain.Interfaces
         Task AddToCart(Product product, int quantity);
         Task<int> RemoveFromCart(Product product);
         List<ShoppingCartItem> GetShoppingCartItems();
-        //List<ShoppingCartItem> GetShoppingCartItems { get; }
         Task ClearCart();
         decimal GetShoppingCartTotal();
-        Product FindProduct(int productId);
     }
 }

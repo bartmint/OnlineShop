@@ -25,7 +25,7 @@ namespace OnlineShop.Infrastructure.Repositories
             {
                 var orderDetail = new OrderDetail()
                 {
-                    Order = order,//blad wystepowal bo encje powinienem caly obiekt przekazac i automatycznie bo Id sie oznaczylo, a nie przekazywac samo id
+                    Order = order,
                     Amount = item.Quantity,
                     ProductId = item.Product.Id,
 

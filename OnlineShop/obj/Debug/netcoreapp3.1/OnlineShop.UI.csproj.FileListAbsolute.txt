@@ -163,8 +163,10 @@ C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\zh-Han
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\OnlineShop.UI.csproj.CoreCompileInputs.cache
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\OnlineShop.UI.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Home\Details.cshtml.g.cs
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Administration\AddProduct.cshtml.g.cs
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Administration\UpdateProduct.cshtml.g.cs
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Cart\AddToShoppingCart.cshtml.g.cs
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Products\ListOfProducts.cshtml.g.cs
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\CategoryMenu\Default.cshtml.g.cs
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Products\ProductDetails.cshtml.g.cs

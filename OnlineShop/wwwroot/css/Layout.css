@@ -1,0 +1,143 @@
+﻿/*font-family: 'Baloo 2', cursive;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Raleway', sans-serif;*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+header {
+    display: flex;
+    width: 90%;
+    height: 10vh;
+    margin: auto;
+    align-items: center;
+
+}
+.logo-container, .nav-links, .cart {
+    display: flex;
+}
+
+h4 {
+    line-height: 50px;
+}
+
+.logo-container {
+    height: 80px;
+    width: 80px;
+}
+
+nav {
+    flex: 2;
+}
+
+.nav-links {
+    justify-content: space-around;
+    list-style: none;
+}
+
+.nav-link {
+    color: #5f5f79;
+    font-size: 18px;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+}
+ .nav-link:hover {
+        color: #5f5f79;
+    }
+
+.cart {
+    justify-content: flex-end;
+    flex: 1;
+}
+
+    .cart > a {
+        text-decoration: none;
+        font-size: 21px;
+        color: #5f5f79;
+    }
+
+        .cart > a:hover {
+            text-decoration: none;
+        }
+
+    .cart > i {
+        color: #5f5f79;
+    }
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+p {
+    font-family: 'Baloo 2', cursive;
+}
+
+button {
+    font-family: 'Baloo 2', cursive;
+}
+
+#footer {
+    width: 100%;
+    background-color: #242925;
+    color: white;
+    height: 15vh;
+}
+
+.main {
+    min-height: calc(100vh - 15vh - 10vh);
+}
+
+#footer > .container {
+    display: flex;
+    align-content: center;
+    margin: auto;
+    height: 15vh;
+}
+
+.info {
+    margin: 20px 70px 0 0;
+    flex: 1;
+}
+
+.news {
+    margin: 20px 70px 0 0;
+    flex: 1;
+}
+
+.contact {
+    margin: 15.5px 0px 0px 0px;
+    flex: 1;
+}
+
+.footer_h {
+    font-size: 20px;
+}
+
+.footer_p {
+    font-size: 14px;
+}
+
+h2 {
+    margin-left: 10px;
+}
+
+.footer-links {
+    text-decoration: none;
+}
+
+    .footer-links > li {
+        height: 22px;
+        text-decoration: none;
+        color: white;
+        text-decoration: none;
+    }
+
+.footer_h > li > i {
+    display: inline-block;
+    color: white;
+}
+
+.nizej {
+    margin-top: 10px;
+}

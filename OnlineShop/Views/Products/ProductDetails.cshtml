@@ -1,0 +1,68 @@
+﻿@model OnlineShop.Domain.Models.Product
+
+@{
+    ViewData["Title"] = Model.Model;
+}
+
+
+<link href="~/css/details.css" rel="stylesheet" />
+
+<section id="product">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <section id="banner-area">
+                    <div class="owl-carousel owl-theme">
+                        @foreach (var photo in Model.Paths)
+                        {
+                            var photopath = "~/Images/" + photo.Path;
+                            <div class="item">
+                                <img class="img-fluid" style="max-height:400px;" src=@photopath
+                                     asp-append-version="true" />
+                            </div>
+                        }
+                    </div>
+                </section>
+                <div class="form-row pt-4 mt-5">
+                    <div class="col">
+                        <a class="btn btn-danger form-control" asp-action="AddToShoppingCart" asp-controller="Cart" asp-route-id="@Model.Id">Add to Cart</a>
+                    </div>
+                    <div class="col">
+                        <a class="btn btn-warning form-control" asp-action="Index" asp-controller="Home">Back to Main site</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6  pl-5">
+                <h5>@Model.Model</h5>
+                <small>by @Model.ProductionCompany</small>
+                <hr />
+                <div class="mt-5">
+                    <p>System: @Model.System</p>
+                    <p>Processor: @Model.CPU</p>
+                    <p>Graphic Cart: @Model.GraphicCard</p>
+                    <p>CPU: @Model.CPU</p>
+                    <p>Ram Memorry: @Model.MemoryType</p>
+                    <p>Hard Drive: @Model.HardDrive</p>
+                    <p>Screen Resolution: @Model.ScreenResolution</p>
+                    <p>Weight: @Model.Weight</p>
+                    <p>Warranty: @Model.Warranty</p>
+                    <p>Production Year: @Model.ProductionYear</p>
+                    <p>Price: @Model.Value.ToString("c")</p>
+                    <p>Available: @Model.Ammount.Quantity</p>
+                </div>
+            </div>
+            <div class="col-12">
+                <h6>Product Description</h6>
+                <hr />
+                <p>
+                    @Model.Description
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts{
+    <script src="~/js/Owl-Carousel.js"></script>
+}

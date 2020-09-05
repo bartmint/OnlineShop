@@ -2,12 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using OnlineShop.Infrastructure.DAL;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace OnlineShop.Infrastructure.Repositories
 {
-    public static  class CartSessionRepository
+    public class CartSessionRepository
     {
         
         public static ShoppingCartRepository GetCart(IServiceProvider service)
@@ -19,7 +17,7 @@ namespace OnlineShop.Infrastructure.Repositories
 
             session.SetString("CartId", cartId);
 
-            return new ShoppingCartRepository(context) { ShoppingCartId = cartId };
+            return new ShoppingCartRepository(context) { ShoppingCartId=cartId };
         }
     }
 }

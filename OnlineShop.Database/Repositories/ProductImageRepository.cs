@@ -28,7 +28,7 @@ namespace OnlineShop.Infrastructure.Repositories
 
             if (!images.Any())
             {
-                return new List<string>();//always return empty list instead of null
+                return new List<string>();
             }
 
             foreach (var model in images)

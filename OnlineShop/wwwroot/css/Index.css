@@ -1,0 +1,56 @@
+﻿.presentation {
+    display: flex;
+    width: 90%;
+    margin: auto;
+    min-height: 60vh;
+    align-items: center;
+}
+
+.cover > img {
+    height: 45vh;
+}
+
+.introduction {
+    flex: 1;
+    margin-left: 30px;
+}
+
+.cover {
+    flex: 1;
+}
+
+.intro-text h1 {
+    font-size: 44px;
+    font-weight: 500;
+    background: linear-gradient(to right, #494964, #6f6f89);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.intro-text p {
+    margin-top: 5px;
+    font-size: 22px;
+    color: #585772;
+}
+
+.cta {
+    padding: 50px 0 0 0;
+}
+
+    .cta > button {
+        width: 180px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+.cta-select {
+    color: white;
+    background-color: rgb(195, 108, 187);
+    border: rgb(195, 108, 187);
+}
+
+.cta-add {
+    color: rgb(195, 108, 187);
+    background-color: white;
+    border: 2px solid rgb(195, 108, 187);
+}

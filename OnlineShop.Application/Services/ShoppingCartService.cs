@@ -12,15 +12,16 @@ namespace OnlineShop.Application.Services
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IProductManager _productManager;
 
+
         public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductManager productManager)
         {
             _shoppingCartRepository = shoppingCartRepository;
             _productManager = productManager;
         }
-        public async Task AddToCart(int productId)
+        public async Task AddToCart(int id)
         {
             int quantity = 1;
-            var selectedProduct = _productManager.GetProductById(productId);
+            var selectedProduct = _productManager.GetProductById(id);
             await _shoppingCartRepository.AddToCart(selectedProduct, quantity);
         }
     }

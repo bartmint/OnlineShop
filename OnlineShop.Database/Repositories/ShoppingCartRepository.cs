@@ -54,12 +54,6 @@ namespace OnlineShop.Infrastructure.Repositories
             await _ctx.SaveChangesAsync();
         }
 
-        public Product FindProduct(int productId)
-        {
-            return _ctx.Products.FirstOrDefault
-                (p => p.Id == productId);
-        }
-
         public List<ShoppingCartItem> GetShoppingCartItems()
         {
             return ShoppingCartItems ??
@@ -103,5 +97,6 @@ namespace OnlineShop.Infrastructure.Repositories
             await _ctx.SaveChangesAsync();
             return localAmount;
         }
+        
     }
 }

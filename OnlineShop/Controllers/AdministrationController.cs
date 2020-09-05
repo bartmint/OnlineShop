@@ -36,7 +36,7 @@ namespace OnlineShop.UI.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult UpdateProduct(int id)//musi byc id bo przy kliknieciu przycisku update zwraca wartosc is invalid ''
+        public IActionResult UpdateProduct(int? id)//musi byc id bo przy kliknieciu przycisku update zwraca wartosc is invalid ''
         {
             return View();
         }
@@ -51,9 +51,13 @@ namespace OnlineShop.UI.Controllers
             return View();
         }
         [HttpGet]
-        public   IActionResult RemoveItem(int id)
+        public   IActionResult RemoveItem(int? id)
         {
-             _productManagerService.RemoveItem(id);
+            if (id == null)
+            {
+                return View();
+            }
+             _productManagerService.RemoveItem(id.Value);
             return RedirectToAction("Index", "Home");
         }
     }
