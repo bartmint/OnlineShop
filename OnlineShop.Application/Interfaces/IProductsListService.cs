@@ -9,6 +9,7 @@ namespace OnlineShop.Application.Interfaces
 {
     public interface IProductsListService
     {
-        IEnumerable<Product> GetProducts();
+       Task<IEnumerable<Product>> GetProducts();
+        Product GetProductById(int id);
     }
 }

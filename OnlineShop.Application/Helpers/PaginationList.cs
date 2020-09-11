@@ -5,15 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OnlineShop.Infrastructure.Utilities
+namespace OnlineShop.Application.Helpers
 {
     public class PaginatedList<T> : List<T>
     {
         public int PageIndex { get; private set; }
         public int TotalPages { get; private set; }
-        // public string category;
-
-
 
         public PaginatedList(List<T> items, int count, int pageIndex, int pageSize)
         {
@@ -22,6 +19,7 @@ namespace OnlineShop.Infrastructure.Utilities
 
             this.AddRange(items);
         }
+
         public bool HasPreviousPage
         {
             get
@@ -37,7 +35,8 @@ namespace OnlineShop.Infrastructure.Utilities
                 return (PageIndex < TotalPages);
             }
         }
-        public static async Task<PaginatedList<T>> CreateAsync(IQueryable<T> source, int pageIndex, int pageSize)
+
+        public static async Task<PaginatedList<T>> CreateAsync(IQueryable<T> source, int pageIndex, int pageSize=1)
         {
             var count = await source.CountAsync();
             var items = await source.Skip((pageIndex - 1) * pageSize).Take(pageSize).ToListAsync();

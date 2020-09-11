@@ -11,16 +11,14 @@ namespace OnlineShop.UI.Controllers
     public class ProductsController : Controller
     {
         private readonly IProductsListService _productsListService;
-        private readonly IProductManagerService _productManagerService;
 
-        public ProductsController(IProductsListService productsListService, IProductManagerService productManagerService)
+        public ProductsController(IProductsListService productsListService)
         {
             _productsListService = productsListService;
-            _productManagerService = productManagerService;
         }
         public IActionResult ProductDetails(int? id)
         {
-            var model = _productManagerService.GetProduct(id.Value);
+            var model = _productsListService.GetProductById(id.Value);
             if (model != null)
             {
                 return View(model);

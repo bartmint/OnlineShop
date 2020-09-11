@@ -15,9 +15,13 @@ namespace OnlineShop.Infrastructure.Repositories
     public class ProductsListRepository : CommonGetProductsRepository, IProductsListRepository
     {
         public ProductsListRepository(ApplicationDb ctx) : base(ctx) { }
+        //public async Task<IEnumerable<Product>> GetProducts()
+        //{
+        //    return await _ctx.Products.Include(p => p.Paths).Include(a => a.Ammount).Take(5).ToListAsync();
+        //}
         public async Task<IEnumerable<Product>> GetProducts()
         {
-            return await _ctx.Products.Include(p => p.Paths).Include(a => a.Ammount).Take(5).ToListAsync();
+            return await _ctx.Products.Include(p => p.Paths).Include(a => a.Ammount).ToListAsync();
         }
 
         /* public Task<IEnumerable<Product>> GetProductsSorted(string category, IQueryable<Product> products)

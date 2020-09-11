@@ -11,7 +11,6 @@ namespace OnlineShop.Application.Interfaces
     {
         Task<int> AddProduct(AddProductViewModel model);
         Task<int> UpdateProduct(EditProductViewModel product);
-        Product GetProduct(int id);
         void RemoveItem(int id);
     }
 }

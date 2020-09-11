@@ -6,7 +6,7 @@ namespace OnlineShop.Domain.Models
     {
         public int Quantity { get; set; }
         public int ProductId { get; set; }
-        public Product Product { get; set; }//dodac produktID jesli nie zadziala, ale powinno
+        public  Product Product { get; set; }
 
     }
 }

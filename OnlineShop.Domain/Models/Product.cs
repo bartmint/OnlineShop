@@ -19,8 +19,8 @@ namespace OnlineShop.Domain.Models
         public MemoryType MemoryType { get; set; }
         public int ProductionYear { get; set; }
         public string ScreenResolution { get; set; }
-        public Ammount Ammount { get; set; }
-        public List<Image> Paths { get; set; }
+        public  Ammount Ammount { get; set; }
+        public virtual List<Image> Paths { get; set; }
         public Product()
         {
             Paths = new List<Image>();

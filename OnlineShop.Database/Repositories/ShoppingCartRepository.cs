@@ -7,96 +7,62 @@ using OnlineShop.Infrastructure.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace OnlineShop.Infrastructure.Repositories
 {
-    public class ShoppingCartRepository : IShoppingCartRepository
+    public class ShoppingCartRepository:IShoppingCartRepository
     {
         private readonly ApplicationDb _ctx;
-        public ShoppingCartRepository(ApplicationDb ctx)
+        private readonly ISessionSettings _session;
+
+        public string ShoppingCartId { get; set; }
+        public const string CartSessionKey = "CartId";
+        public ShoppingCartRepository(ApplicationDb ctx, ISessionSettings session)
         {
             _ctx = ctx;
+            _session = session;
         }
-        public string ShoppingCartId { get; set; }
-        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
-        public async Task AddToCart(Product product, int quantity)
+        public void AddToCart(Product product,int id)
         {
-            var shoppingCartItem =
-                _ctx.CartItems.SingleOrDefault(
-                    s => s.Product.Id == product.Id
-                    && s.ShoppingCartId == ShoppingCartId);
+            //setting Id
+            ShoppingCartId = _session.OnGet();
 
-            if (shoppingCartItem == null)
+            //retrieve product from database
+            //ShoppingCartId = GetCartId();
+
+            var cartItem = _ctx.CartItems.FirstOrDefault(
+                c => c.CartId == ShoppingCartId
+                && c.ProductId == id);
+            //create new product if no cart item exists
+            if (cartItem == null)
             {
-                shoppingCartItem = new ShoppingCartItem
+                cartItem = new ShoppingCartItem
                 {
-                    ShoppingCartId = ShoppingCartId,
-                    Product = product,
-                    Quantity = quantity
+                    ProductId=id,
+                    CartId=ShoppingCartId,
+                    Product=_ctx.Products.SingleOrDefault(p=>p.Id==id),
+                    Quantity=1,
                 };
-                await _ctx.CartItems.AddAsync(shoppingCartItem);
+                _ctx.CartItems.Add(cartItem);
             }
             else
             {
-                shoppingCartItem.Quantity++;
+                cartItem.Quantity++;
             }
-           await _ctx.SaveChangesAsync();
+            _ctx.SaveChanges();
         }
-
-        public async Task ClearCart()
+        public void Dispose()
         {
-            var cartItems = _ctx
-               .CartItems
-               .Where(s => s.ShoppingCartId == ShoppingCartId);
-            _ctx.CartItems.RemoveRange(cartItems);
-
-            await _ctx.SaveChangesAsync();
-        }
-
-        public List<ShoppingCartItem> GetShoppingCartItems()
-        {
-            return ShoppingCartItems ??
-               (ShoppingCartItems =
-               _ctx.CartItems
-               .Where(c => c.ShoppingCartId == ShoppingCartId)
-               .Include(s => s.Product)
-               .ToList()
-               );
-        }
-
-        public decimal GetShoppingCartTotal()
-        {
-            var total = _ctx.CartItems
-                .Where(s => s.ShoppingCartId == ShoppingCartId)
-                .Select(s => s.Product.Value * s.Quantity).Sum();
-            return total;
-        }
-
-        public async Task<int> RemoveFromCart(Product product)
-        {
-            var shoppingCartItem =
-                _ctx.CartItems.SingleOrDefault(
-                    s => s.Product.Id == product.Id
-                    && s.ShoppingCartId == ShoppingCartId);
-            var localAmount = 0;
-            if (shoppingCartItem != null)
+            if (_ctx != null)
             {
-                if (shoppingCartItem.Quantity > 1)
-                {
-                    shoppingCartItem.Quantity--;
-                    localAmount = shoppingCartItem.Quantity;
-                }
-                else
-                {
-                    _ctx.CartItems.Remove(shoppingCartItem);
-                }
-
+                _ctx.Dispose();
             }
-
-            await _ctx.SaveChangesAsync();
-            return localAmount;
         }
+
+        
         
     }
 }

@@ -1,4 +1,6 @@
-﻿using OnlineShop.Application.Interfaces;
+﻿using Microsoft.AspNetCore.Http;
+using OnlineShop.Application.Helpers;
+using OnlineShop.Application.Interfaces;
 using OnlineShop.Domain.Interfaces;
 using OnlineShop.Domain.Models;
 using System;
@@ -18,11 +20,14 @@ namespace OnlineShop.Application.Services
             _repository = repository;
         }
 
-        public  IEnumerable<Product> GetProducts()
+        public async  Task<IEnumerable<Product>> GetProducts()
         {
-            var items = _repository.GetProducts();
-            return items.Result;
+            var items = await _repository.GetProducts();//pobieram produkty
+            return items;
         }
-       
+        public Product GetProductById(int id)
+        {
+            return _repository.GetProductById(id);
+        }
     }
 }

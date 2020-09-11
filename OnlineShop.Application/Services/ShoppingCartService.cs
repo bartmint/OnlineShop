@@ -1,9 +1,8 @@
 ﻿using OnlineShop.Application.Interfaces;
 using OnlineShop.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http.Extensions;
+using Microsoft.AspNetCore.Http;
 
 namespace OnlineShop.Application.Services
 {
@@ -11,18 +10,22 @@ namespace OnlineShop.Application.Services
     {
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IProductManager _productManager;
+        private readonly ISessionSettings _session;
 
-
-        public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductManager productManager)
+        public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductManager productManager, ISessionSettings session)
         {
             _shoppingCartRepository = shoppingCartRepository;
             _productManager = productManager;
+            _session = session;
+            //_session.OnGet();
+            
         }
-        public async Task AddToCart(int id)
+        public void  AddToCart(int id)
         {
             int quantity = 1;
             var selectedProduct = _productManager.GetProductById(id);
-            await _shoppingCartRepository.AddToCart(selectedProduct, quantity);
+             _shoppingCartRepository.AddToCart(selectedProduct, quantity);
         }
+       
     }
 }

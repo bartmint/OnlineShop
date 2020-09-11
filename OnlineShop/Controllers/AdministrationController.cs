@@ -31,7 +31,7 @@ namespace OnlineShop.UI.Controllers
             if (ModelState.IsValid)
             {
                int id = await _productManagerService.AddProduct(product);
-               return RedirectToAction("Details", "Home", new {Id=id });//same id bez new powoduje blad w photo null
+               return RedirectToAction("ProductDetails", "Products", new {Id=id });//same id bez new powoduje blad w photo null
             }
             return View();
         }
@@ -46,7 +46,7 @@ namespace OnlineShop.UI.Controllers
             if (ModelState.IsValid)
             {
                 int id = await _productManagerService.UpdateProduct(product);
-                return RedirectToAction("Details", "Home", new { Id=id });//narazie przekierowanie na index, bo na details powoduje nulla przy zdjeciach
+                return RedirectToAction("ProductsDetails", "Products", new { Id=id });//narazie przekierowanie na index, bo na details powoduje nulla przy zdjeciach
             }
             return View();
         }

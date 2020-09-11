@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using OnlineShop.Domain.Interfaces;
 using OnlineShop.Infrastructure.Repositories;
+using OnlineShop.Infrastructure.Utilities;
+using System;
 
 namespace OnlineShop.Infrastructure
 {
@@ -15,14 +17,14 @@ namespace OnlineShop.Infrastructure
             services.AddTransient<IAmmountRepository, AmmountRepository>();
             services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddTransient<IProductsListRepository, ProductsListRepository>();
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped(sp => CartSessionRepository.GetCart(sp));//<- tutaj
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ISessionSettings, helper>();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
+                options.Cookie.Name = "Cart";
                 options.Cookie.IsEssential = true;
                 options.Cookie.HttpOnly = true;
-                options.Cookie.Name = "Cart";
             });
            
             //nie tworzy ciasteczka na stronie, czemu? update** tworzy ciasteczko ale AddScoped<> nie dziala, ciasteczko tworzyc trzeba recznie w kontrolerze

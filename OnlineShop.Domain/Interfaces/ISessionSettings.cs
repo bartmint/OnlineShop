@@ -4,8 +4,8 @@ using System.Text;
 
 namespace OnlineShop.Domain.Interfaces
 {
-    public interface  SessionGetCart
+    public interface ISessionSettings
     {
-         
+        string OnGet();
     }
 }

@@ -57,10 +57,7 @@ namespace OnlineShop.Application.Services
             int id=await _productManager.CreateProduct(model);
             return id;
         }
-        public Product GetProduct(int id)
-        {
-            return  _productManager.GetProductById(id);
-        }
+        
 
         public async Task<int> UpdateProduct(EditProductViewModel product)
         {
