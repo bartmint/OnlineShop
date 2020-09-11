@@ -1,0 +1,63 @@
+﻿@model OnlineShop.Application.ViewModels.CartItemsViewModel
+@{
+    ViewData["Title"] = "Cart";
+}
+<link href="~/css/CartStyle.css" rel="stylesheet" />
+@if (Model==null)
+{
+    <p>@ViewBag.Cart</p>
+}
+else
+
+{
+    <div class="row justify-content-center mt-5">
+        <table class="table table-dark table-bordered col-8">
+            <tr class="col-8">
+                <th class="col-2">@Html.DisplayName("Product name")</th>
+
+                <th class="col-2">@Html.DisplayName("Product price")</th>
+
+
+                <th class="col-2">@Html.DisplayName("Product quantity")</th>
+
+            </tr>
+
+
+
+            @foreach (var item in Model.CartItems)
+            {
+                <tr class="col-8">
+                    <td class="col-2">
+                        @Html.DisplayFor(modelItem => item.Product.Model)
+                    </td>
+                    <td class="col-2">
+                        @Html.DisplayFor(modelItem => item.Product.Value)
+                    </td>
+                    <td class="col-2">
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td class="col-1 but_nav">
+                        @Html.ActionLink("Details", "Details", "Home",
+                                            new { productID = item.Product.Id }, null)
+                    </td>
+                    <td class="col-1 but_nav">
+                        @Html.ActionLink("Remove", "RemoveFromShoppingCart", "Cart",
+        new { productID = item.Product.Id }, null)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+
+    <div class="summary">
+        <p>Products quantity: @Model.CartItems.Count</p>
+        <p>Total payment: @Model.ShoppingCartTotal.ToString("c")</p>
+        <div class="but_down btn btn-danger">@Html.ActionLink("Clear cart", "ClearShoppingCart", "Cart")</div>
+        <div class="but_down btn btn-success">@Html.ActionLink("Complete Order", "Checkout", "Order")</div>
+    </div>
+}
+@section Scripts{
+
+}
+

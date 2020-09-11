@@ -17,15 +17,18 @@ namespace OnlineShop.Infrastructure.Repositories
     {
         private readonly ApplicationDb _ctx;
         private readonly ISessionSettings _session;
-
         public string ShoppingCartId { get; set; }
         public const string CartSessionKey = "CartId";
+        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
+
+
         public ShoppingCartRepository(ApplicationDb ctx, ISessionSettings session)
         {
             _ctx = ctx;
             _session = session;
         }
-        public void AddToCart(Product product,int id)
+
+        public void AddToCart(Product product, int quantity)
         {
             //setting Id
             ShoppingCartId = _session.OnGet();
@@ -33,24 +36,24 @@ namespace OnlineShop.Infrastructure.Repositories
             //retrieve product from database
             //ShoppingCartId = GetCartId();
 
-            var cartItem = _ctx.CartItems.FirstOrDefault(
-                c => c.CartId == ShoppingCartId
-                && c.ProductId == id);
+            var cartItems = 
+                _ctx.CartItems.FirstOrDefault(
+                c => c.Product.Id == product.Id
+                && c.CartId == ShoppingCartId);
             //create new product if no cart item exists
-            if (cartItem == null)
+            if (cartItems == null)
             {
-                cartItem = new ShoppingCartItem
+                cartItems = new ShoppingCartItem
                 {
-                    ProductId=id,
                     CartId=ShoppingCartId,
-                    Product=_ctx.Products.SingleOrDefault(p=>p.Id==id),
-                    Quantity=1,
+                    Product=product,
+                    Quantity=quantity,
                 };
-                _ctx.CartItems.Add(cartItem);
+                _ctx.CartItems.Add(cartItems);
             }
             else
             {
-                cartItem.Quantity++;
+                cartItems.Quantity++;
             }
             _ctx.SaveChanges();
         }
@@ -62,7 +65,56 @@ namespace OnlineShop.Infrastructure.Repositories
             }
         }
 
-        
-        
+        public int RemoveFromCart(Product product)
+        {
+            var shoppingCartItem =
+                _ctx.CartItems.SingleOrDefault(
+                    s => s.Product.Id == product.Id
+                    && s.CartId == _session.OnGet());
+            var localAmount = 0;
+            if (shoppingCartItem != null)
+            {
+                if (shoppingCartItem.Quantity > 1)
+                {
+                    shoppingCartItem.Quantity--;
+                    localAmount = shoppingCartItem.Quantity;
+                }
+                else
+                {
+                    _ctx.CartItems.Remove(shoppingCartItem);
+                }
+            }
+            _ctx.SaveChanges();
+            return localAmount;
+        }
+
+        public List<ShoppingCartItem> GetShoppingCartItems()
+        {
+            return ShoppingCartItems ?? (
+                ShoppingCartItems =
+                _ctx.CartItems
+                .Where(c => c.CartId == _session.OnGet())
+                .Include(s => s.Product)
+                .ThenInclude(p=>p.Paths)
+                .ToList());
+        }
+
+        public async Task ClearCart()
+        {
+            var cartItems = _ctx
+                .CartItems
+                .Where(s => s.CartId == ShoppingCartId);
+            _ctx.CartItems.RemoveRange(cartItems);
+
+           await _ctx.SaveChangesAsync();
+        }
+
+        public decimal GetShoppingCartTotal()
+        {
+            var total = _ctx.CartItems
+                .Where(s => s.CartId == _session.OnGet())
+                .Select(s => s.Product.Value * s.Quantity).Sum();
+            return total;
+        }
     }
 }

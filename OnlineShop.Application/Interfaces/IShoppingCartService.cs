@@ -1,4 +1,5 @@
-﻿using OnlineShop.Domain.Models;
+﻿using OnlineShop.Application.ViewModels;
+using OnlineShop.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,9 @@ namespace OnlineShop.Application.Interfaces
     public interface IShoppingCartService
     {
         void AddToCart(int id);
-        //ShoppingCartItem Show();
+        int RemoveFromCart(int id);
+        CartItemsViewModel GetShoppingCartItems();
+        Task ClearCart();
+        decimal GetShoppingCartTotal();
     }
 }

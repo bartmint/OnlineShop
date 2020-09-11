@@ -18,7 +18,7 @@ namespace OnlineShop.Infrastructure
             services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddTransient<IProductsListRepository, ProductsListRepository>();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<ISessionSettings, helper>();
+            services.AddScoped<ISessionSettings, SessionSettings>();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {

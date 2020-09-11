@@ -16,24 +16,53 @@ namespace OnlineShop.UI.Controllers
     {
         private readonly IShoppingCartService _shoppingCartService;
 
-        public CartController(IShoppingCartService shoppingCartService)
+        public CartController(IShoppingCartService shoppingCartService)=> _shoppingCartService = shoppingCartService;
+        
+        public IActionResult CartRepository()
         {
-            _shoppingCartService = shoppingCartService;
-        }
-        public  IActionResult AddToShoppingCart(int Id)
-        {
-            _shoppingCartService.AddToCart(Id);
-            return Json(HttpContext.Session.GetString("_Cart"));
-
-            if (Id != 0)
+            var model = _shoppingCartService.GetShoppingCartItems();
+            if (model.CartItems.Count !=0)
             {
-                 _shoppingCartService.AddToCart(Id);
+                return View(model);
             }
-            var stringObj = HttpContext.Session.GetString("Cart");
-            //_shoppingCartService.Show();
+            ViewBag.Cart = "Your Cart is empty";
+            return View();
+        }
+        public  IActionResult AddToShoppingCart(int? Id)
+        {
+            if (Id.HasValue)
+            {
+                _shoppingCartService.AddToCart(Id.Value);
+                return RedirectToAction("CartRepository");
+            }
+            return Json(HttpContext.Session.GetString("_Cart"));
+            
+        }
+        public IActionResult RemoveFromCart(int? Id)
+        {
+            if (Id.HasValue)
+            {
+                _shoppingCartService.RemoveFromCart(Id.Value);
+                return RedirectToAction("CartRepository");
+            }
+            return Json("RemoveFromShoppingCart -> ");
+        }
+        public IActionResult ClearShoppingCart()
+        {
+            _shoppingCartService.ClearCart();
             return RedirectToAction("CartRepository");
         }
-       
+        public IActionResult CartRepository2()
+        {
+            var model = _shoppingCartService.GetShoppingCartItems();
+            if (model.CartItems.Count != 0)
+            {
+                return View(model);
+            }
+            ViewBag.Cart = "Your Cart is empty";
+            return View();
+        }
+
 
     }
 }

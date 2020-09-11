@@ -10,6 +10,6 @@ namespace OnlineShop.Application.Interfaces
     public interface IProductsListService
     {
        Task<IEnumerable<Product>> GetProducts();
-        Product GetProductById(int id);
+       Product GetProductById(int id);
     }
 }

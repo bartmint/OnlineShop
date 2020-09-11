@@ -29,6 +29,7 @@ namespace OnlineShop
             services.AddApplication();
             services.AddControllersWithViews();
             services.AddInfrastructure();
+            
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

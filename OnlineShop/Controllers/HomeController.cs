@@ -19,14 +19,11 @@ namespace OnlineShop.UI.Controllers
         public HomeController(IProductManagerService productManagerService)
         {
             _productManagerService = productManagerService;
-
         }
-        
 
         [HttpGet]
         public IActionResult Index()
         {
-           
             return View();
         }
         

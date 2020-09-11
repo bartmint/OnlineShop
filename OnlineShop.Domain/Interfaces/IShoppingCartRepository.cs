@@ -7,9 +7,9 @@ namespace OnlineShop.Domain.Interfaces
     public interface IShoppingCartRepository
     {
         void AddToCart(Product product, int quantity);
-        //Task<int> RemoveFromCart(Product product);
-        //List<ShoppingCartItem> GetShoppingCartItems();
-        //Task ClearCart();
-        //decimal GetShoppingCartTotal();
+        int RemoveFromCart(Product product);
+        List<ShoppingCartItem> GetShoppingCartItems();
+        Task ClearCart();
+        decimal GetShoppingCartTotal();
     }
 }
