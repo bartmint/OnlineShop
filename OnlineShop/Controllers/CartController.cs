@@ -33,7 +33,8 @@ namespace OnlineShop.UI.Controllers
             if (Id.HasValue)
             {
                 _shoppingCartService.AddToCart(Id.Value);
-                return RedirectToAction("Index","Home");//zmienic na liste produktow
+                //return RedirectToAction("Index","Home");//zmienic na liste produktow
+                return RedirectToAction("CartRepository");
             }
             return Json("Add to shopping cart -> failed");
             
@@ -43,7 +44,7 @@ namespace OnlineShop.UI.Controllers
             if (Id.HasValue)
             {
                 _shoppingCartService.RemoveFromCart(Id.Value);
-                return RedirectToAction("Index", "Home");//zmienic na liste produktow
+                return RedirectToAction("CartRepository");
             }
             return Json("RemoveFromShoppingCart -> failed");
         }

@@ -6,13 +6,11 @@
 
 <h1>Update product</h1>
 <hr />
-<div class="row">
-    <div class="col-md-4">
         <form asp-action="UpdateProduct" asp-controller="Administration" enctype="multipart/form-data" name="input" method="post">
             <div asp-validation-summary="All" />
-            <div class="form-group">
+            <div class="form-group row">
                 <label asp-for="ProductionCompany" class="control-label"></label>
-                <div>
+                <div class="col-sm-10">
                     <select asp-for="ProductionCompany" class="custom-select mr-sm-2"
                             asp-items="Html.GetEnumSelectList<Producent>()">
                         <option value="">Please Select</option>
@@ -20,7 +18,7 @@
                 </div>
                 <span asp-validation-for="ProductionCompany" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="col-sm-10">
                 <label asp-for="Model" class="control-label"></label>
                 <input asp-for="Model" class="form-control" />
                 <span asp-validation-for="Model" class="text-danger"></span>
@@ -98,6 +96,6 @@
             </div>
             <button type="submit" asp-action="UpdateProduct" asp-controller="Administration">Update</button>
         </form>
-    </div>
-</div>
+
+
 

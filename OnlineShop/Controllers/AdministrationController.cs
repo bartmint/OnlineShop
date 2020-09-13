@@ -45,7 +45,7 @@ namespace OnlineShop.UI.Controllers
             if (ModelState.IsValid)
             {
                 int id = await _productManagerService.UpdateProduct(product);
-                return RedirectToAction("ProductsDetails", "Products", new { Id=id });//narazie przekierowanie na index, bo na details powoduje nulla przy zdjeciach
+                return RedirectToAction("ProductDetails", "Products", new { Id=id });//narazie przekierowanie na index, bo na details powoduje nulla przy zdjeciach
             }
             return View();
         }

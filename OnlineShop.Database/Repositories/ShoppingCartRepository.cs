@@ -17,7 +17,7 @@ namespace OnlineShop.Infrastructure.Repositories
     {
         private readonly ApplicationDb _ctx;
         private readonly ISessionSettings _session;
-        public string ShoppingCartId { get; set; }
+        private static string ShoppingCartId { get; set; }
         public const string CartSessionKey = "CartId";
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
@@ -70,7 +70,7 @@ namespace OnlineShop.Infrastructure.Repositories
             var shoppingCartItem =
                 _ctx.CartItems.SingleOrDefault(
                     s => s.Product.Id == product.Id
-                    && s.CartId == _session.OnGet());
+                    && s.CartId == ShoppingCartId);
             var localAmount = 0;
             if (shoppingCartItem != null)
             {
@@ -93,7 +93,7 @@ namespace OnlineShop.Infrastructure.Repositories
             return ShoppingCartItems ?? (
                 ShoppingCartItems =
                 _ctx.CartItems
-                .Where(c => c.CartId == _session.OnGet())
+                .Where(c => c.CartId == ShoppingCartId)
                 .Include(s => s.Product)
                 .ThenInclude(p => p.Paths)
                 .Include(a => a.Product.Ammount)
@@ -113,7 +113,7 @@ namespace OnlineShop.Infrastructure.Repositories
         public decimal GetShoppingCartTotal()
         {
             var total = _ctx.CartItems
-                .Where(s => s.CartId == _session.OnGet())
+                .Where(s => s.CartId == ShoppingCartId)
                 .Select(s => s.Product.Value * s.Quantity).Sum();
             return total;
         }

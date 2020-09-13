@@ -20,18 +20,24 @@ else
         <tbody>
             @foreach (var item in Model.CartItems)
             {
-            <tr>
-                <td>@item.Product.Id</td>
-                <td>@item.Product.Model</td>
-                <td>@item.Product.Ammount.Quantity</td>
-                <td>@item.Quantity</td>
-                <td>@item.Product.Value</td>
-                <td>
-                    <a  asp-controller="Cart" asp-action="AddToShoppingCart" class="btn btn-primary" asp-route-Id="@item.Product.Id">+</a>
-                    <a  asp-controller="Cart" asp-action="RemoveFromCart" class="btn btn-primary" asp-route-Id="@item.Product.Id">-</a>
-                </td>
-            </tr>
+                <tr>
+                    <td>@item.Product.Id</td>
+                    <td>@item.Product.Model</td>
+                    <td>@item.Product.Ammount.Quantity</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Product.Value</td>
+                    <td>
+                        <a asp-controller="Cart" asp-action="AddToShoppingCart" class="btn btn-primary" asp-route-Id="@item.Product.Id">+</a>
+                        <a asp-controller="Cart" asp-action="RemoveFromCart" class="btn btn-primary" asp-route-Id="@item.Product.Id">-</a>
+                    </td>
+                </tr>
             }
         </tbody>
     </table>
+    <div class="summary">
+        <p>Products quantity: @Model.CartItems.Count</p>
+        <p>Total payment: @Model.ShoppingCartTotal.ToString("c")</p>
+        <div class="but_down btn btn-danger">@Html.ActionLink("Clear cart", "ClearShoppingCart", "Cart")</div>
+        <div class="but_down btn btn-success">@Html.ActionLink("Complete Order", "Order", "Checkout")</div>
+    </div>
 }

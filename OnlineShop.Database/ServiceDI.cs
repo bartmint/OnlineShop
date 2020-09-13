@@ -17,9 +17,12 @@ namespace OnlineShop.Infrastructure
             services.AddTransient<IAmmountRepository, AmmountRepository>();
             services.AddTransient<IShoppingCartRepository, ShoppingCartRepository>();
             services.AddTransient<IProductsListRepository, ProductsListRepository>();
-            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<ISessionSettings, SessionSettings>();
             services.AddTransient<ICheckoutRepository, CheckoutRepository>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
+
+
+            services.AddScoped<ISessionSettings, SessionSettings>();
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
@@ -28,7 +31,6 @@ namespace OnlineShop.Infrastructure
                 options.Cookie.HttpOnly = true;
             });
            
-            //nie tworzy ciasteczka na stronie, czemu? update** tworzy ciasteczko ale AddScoped<> nie dziala, ciasteczko tworzyc trzeba recznie w kontrolerze
             return services;
         }
     }

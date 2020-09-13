@@ -179,3 +179,4 @@ C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Online
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\ShoppingCartSummary\Default.cshtml.g.cs
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Checkout\Order.cshtml.g.cs
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Checkout\OrderComplete.cshtml.g.cs
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Checkout\312.cshtml.g.cs

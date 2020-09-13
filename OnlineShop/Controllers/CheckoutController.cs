@@ -29,7 +29,7 @@ namespace OnlineShop.UI.Controllers
 
                 if (!check)
                 {
-                    ModelState.AddModelError("", "your cart is empty");
+                    ViewBag.ErrorEmptyCart = "Your cart is empty, u cant order empty cart";
                     return View();
                 }
                 return RedirectToAction("OrderComplete");
@@ -39,6 +39,10 @@ namespace OnlineShop.UI.Controllers
         public IActionResult OrderComplete()
         {
             ViewBag.CheckoutCompleteMessage = "Thanks for your order";
+            return View();
+        }
+        public IActionResult fasdfa()
+        {
             return View();
         }
     }

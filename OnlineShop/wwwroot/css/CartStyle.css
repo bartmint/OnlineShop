@@ -7,3 +7,9 @@
     margin-top: calc(15% - 1.5vh);
     left: calc(50% - 12vh);
 }
+.summary {
+    font-size: 18px;
+    position: fixed;
+    left: 45%;
+    margin-top:10vh;
+}

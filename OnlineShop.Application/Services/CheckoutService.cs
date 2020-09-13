@@ -28,7 +28,6 @@ namespace OnlineShop.Application.Services
                 return true;
             }
             return false;
-            
         }
 
     }
