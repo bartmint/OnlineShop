@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Infrastructure.Repositories
 {
-    public class OrderRepository : IOrderRepository
+    public class CheckoutRepository : ICheckoutRepository
     {
         private readonly ApplicationDb _ctx;
-        public OrderRepository(ApplicationDb ctx)
+        public CheckoutRepository(ApplicationDb ctx)
         {
             _ctx = ctx;
         }

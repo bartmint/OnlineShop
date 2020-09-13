@@ -1,0 +1,60 @@
+﻿@model OnlineShop.Domain.Models.Order
+
+
+
+<form class="mt-5" asp-action="Checkout" method="post" role="form" style="width:80vh; margin:auto;">
+    <div class="form-group row ">
+
+        <label asp-for="FirstName" class="col-sm-3 col-form-label mb-2"></label>
+        <div class="col-sm-10   ">
+            <input asp-for="FirstName" class="form-control" placeholder="FirstName" />
+            <span asp-validation-for="FirstName" class="text-danger"></span>
+        </div>
+
+        <label asp-for="LastName" class="col-sm-3 col-form-label mb-2"></label>
+        <div class="col-sm-10">
+
+            <input asp-for="LastName" class="form-control" placeholder="LastName" />
+            <span asp-validation-for="LastName" class="text-danger"></span>
+        </div>
+        <label asp-for="AdressLine" class="col-sm-3 col-form-label mb-2"></label>
+
+        <div class="col-sm-10">
+            <input asp-for="AdressLine" class="form-control" placeholder="AdressLine" />
+            <span asp-validation-for="AdressLine" class="text-danger"></span>
+        </div>
+        <label asp-for="ZipCode" class="col-sm-3 col-form-label mb-2"></label>
+
+        <div class="col-sm-10">
+            <input asp-for="ZipCode" class="form-control" placeholder="ZipCode" />
+            <span asp-validation-for="ZipCode" class="text-danger"></span>
+        </div>
+        <label asp-for="State" class="col-sm-3 col-form-label mb-2"></label>
+
+        <div class="col-sm-10">
+            <input asp-for="State" class="form-control" placeholder="State" />
+            <span asp-validation-for="State" class="text-danger"></span>
+        </div>
+        <label asp-for="Country" class="col-sm-3 col-form-label mb-2"></label>
+
+        <div class="col-sm-10">
+            <input asp-for="Country" class="form-control" placeholder="Country" />
+            <span asp-validation-for="Country" class="text-danger"></span>
+        </div>
+
+        <label asp-for="PhoneNumber" class="col-sm-2 col-form-label mb-2"></label>
+
+        <div class="col-sm-10">
+            <input asp-for="PhoneNumber" class="form-control" placeholder="PhoneNumber" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <label asp-for="Email" class="col-sm-3 col-form-label mb-2"></label>
+
+        <div class="col-sm-10">
+            <input asp-for="Email" class="form-control" placeholder="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-success" value="Complete Order" asp-controller="Checkout" asp-action="Order">Complete order</button>
+
+    </div>
+</form>

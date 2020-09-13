@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.Domain.Interfaces
 {
-    public interface IOrderRepository
+    public interface ICheckoutRepository
     {
         Task CreateOrder(Order order, List<ShoppingCartItem> shoppingCartItems);
     }

@@ -21,7 +21,7 @@ namespace OnlineShop.UI.Controllers
         public IActionResult CartRepository()
         {
             var model = _shoppingCartService.GetShoppingCartItems();
-            if (model.CartItems.Count !=0)
+            if (model.CartItems.Count != 0)
             {
                 return View(model);
             }
@@ -33,9 +33,9 @@ namespace OnlineShop.UI.Controllers
             if (Id.HasValue)
             {
                 _shoppingCartService.AddToCart(Id.Value);
-                return RedirectToAction("CartRepository");
+                return RedirectToAction("Index","Home");//zmienic na liste produktow
             }
-            return Json(HttpContext.Session.GetString("_Cart"));
+            return Json("Add to shopping cart -> failed");
             
         }
         public IActionResult RemoveFromCart(int? Id)
@@ -43,26 +43,15 @@ namespace OnlineShop.UI.Controllers
             if (Id.HasValue)
             {
                 _shoppingCartService.RemoveFromCart(Id.Value);
-                return RedirectToAction("CartRepository");
+                return RedirectToAction("Index", "Home");//zmienic na liste produktow
             }
-            return Json("RemoveFromShoppingCart -> ");
+            return Json("RemoveFromShoppingCart -> failed");
         }
         public IActionResult ClearShoppingCart()
         {
             _shoppingCartService.ClearCart();
-            return RedirectToAction("CartRepository");
+            return RedirectToAction("ListOfProducts","Products");
         }
-        public IActionResult CartRepository2()
-        {
-            var model = _shoppingCartService.GetShoppingCartItems();
-            if (model.CartItems.Count != 0)
-            {
-                return View(model);
-            }
-            ViewBag.Cart = "Your Cart is empty";
-            return View();
-        }
-
-
+        
     }
 }

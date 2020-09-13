@@ -95,8 +95,9 @@ namespace OnlineShop.Infrastructure.Repositories
                 _ctx.CartItems
                 .Where(c => c.CartId == _session.OnGet())
                 .Include(s => s.Product)
-                .ThenInclude(p=>p.Paths)
-                .ToList());
+                .ThenInclude(p => p.Paths)
+                .Include(a => a.Product.Ammount)
+                .ToList()) ;
         }
 
         public async Task ClearCart()

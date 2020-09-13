@@ -1,0 +1,13 @@
+﻿@model int
+
+
+@if (Model > 0)
+{
+    <a asp-controller="Cart" asp-action="CartRepository">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="cart-status">
+            @Model
+        </span>
+    </a>
+}
+@*nie potrzeba az tylu informacji w ViewModelu, wystarczy int ->ilosc elementow*@

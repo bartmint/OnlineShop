@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using OnlineShop.Application.Components;
+using OnlineShop.Application.ComponentsAbstract;
 using OnlineShop.Application.Interfaces;
 using OnlineShop.Application.Services;
 using OnlineShop.Domain.Interfaces;
@@ -14,6 +16,8 @@ namespace OnlineShop.Infrastructure
             services.AddTransient<IProductManagerService, ProductManagerService>();
             services.AddTransient<IShoppingCartService, ShoppingCartService>();
             services.AddTransient<IProductsListService, ProductsListService>();
+            services.AddTransient<IShoppingCart, ShoppingCart>();
+            services.AddTransient<ICheckoutService, CheckoutService>();
             return services;
         }
     }

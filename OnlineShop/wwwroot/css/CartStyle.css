@@ -1,0 +1,9 @@
+﻿.empty {
+    text-align: center;
+    position: absolute;
+    height: 3vh;
+    font-size: 25px;
+    width: 24vh;
+    margin-top: calc(15% - 1.5vh);
+    left: calc(50% - 12vh);
+}

@@ -14,13 +14,6 @@ namespace OnlineShop.UI.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IProductManagerService _productManagerService;
-
-        public HomeController(IProductManagerService productManagerService)
-        {
-            _productManagerService = productManagerService;
-        }
-
         [HttpGet]
         public IActionResult Index()
         {

@@ -1,63 +1,37 @@
 ﻿@model OnlineShop.Application.ViewModels.CartItemsViewModel
-@{
-    ViewData["Title"] = "Cart";
-}
 <link href="~/css/CartStyle.css" rel="stylesheet" />
-@if (Model==null)
+@if (Model == null)
 {
-    <p>@ViewBag.Cart</p>
+    <p class="empty">@ViewBag.Cart</p>
 }
 else
-
 {
-    <div class="row justify-content-center mt-5">
-        <table class="table table-dark table-bordered col-8">
-            <tr class="col-8">
-                <th class="col-2">@Html.DisplayName("Product name")</th>
-
-                <th class="col-2">@Html.DisplayName("Product price")</th>
-
-
-                <th class="col-2">@Html.DisplayName("Product quantity")</th>
-
+    <table class="table w-50 m-auto pt-5 table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">product</th>
+                <th scope="col">available</th>
+                <th scope="col">quantity</th>
+                <th scope="col">price</th>
+                <th scope="col"></th>
             </tr>
-
-
-
+        </thead>
+        <tbody>
             @foreach (var item in Model.CartItems)
             {
-                <tr class="col-8">
-                    <td class="col-2">
-                        @Html.DisplayFor(modelItem => item.Product.Model)
-                    </td>
-                    <td class="col-2">
-                        @Html.DisplayFor(modelItem => item.Product.Value)
-                    </td>
-                    <td class="col-2">
-                        @Html.DisplayFor(modelItem => item.Quantity)
-                    </td>
-                    <td class="col-1 but_nav">
-                        @Html.ActionLink("Details", "Details", "Home",
-                                            new { productID = item.Product.Id }, null)
-                    </td>
-                    <td class="col-1 but_nav">
-                        @Html.ActionLink("Remove", "RemoveFromShoppingCart", "Cart",
-        new { productID = item.Product.Id }, null)
-                    </td>
-                </tr>
+            <tr>
+                <td>@item.Product.Id</td>
+                <td>@item.Product.Model</td>
+                <td>@item.Product.Ammount.Quantity</td>
+                <td>@item.Quantity</td>
+                <td>@item.Product.Value</td>
+                <td>
+                    <a  asp-controller="Cart" asp-action="AddToShoppingCart" class="btn btn-primary" asp-route-Id="@item.Product.Id">+</a>
+                    <a  asp-controller="Cart" asp-action="RemoveFromCart" class="btn btn-primary" asp-route-Id="@item.Product.Id">-</a>
+                </td>
+            </tr>
             }
-
-        </table>
-    </div>
-
-    <div class="summary">
-        <p>Products quantity: @Model.CartItems.Count</p>
-        <p>Total payment: @Model.ShoppingCartTotal.ToString("c")</p>
-        <div class="but_down btn btn-danger">@Html.ActionLink("Clear cart", "ClearShoppingCart", "Cart")</div>
-        <div class="but_down btn btn-success">@Html.ActionLink("Complete Order", "Checkout", "Order")</div>
-    </div>
+        </tbody>
+    </table>
 }
-@section Scripts{
-
-}
-

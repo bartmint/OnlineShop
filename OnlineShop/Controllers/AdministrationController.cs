@@ -22,7 +22,6 @@ namespace OnlineShop.UI.Controllers
         [HttpGet]
         public IActionResult AddProduct()
         {
-           
             return View();
         }
         [HttpPost]
