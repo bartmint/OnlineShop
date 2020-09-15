@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Http;
-using OnlineShop.Domain.Enums.ProductItems;
+﻿using OnlineShop.Domain.Enums.ProductItems;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 
-namespace OnlineShop.Application.ViewModels
+namespace OnlineShop.Application.ViewModels.Product
 {
-    public class AddProductViewModel
+    public class ProductVM
     {
+        [Required(ErrorMessage = "Ammount field is required")]
+        public int Ammount { get; set; }
         [Required(ErrorMessage = "Producent field is required")]
         public Producent ProductionCompany { get; set; }
         [Required(ErrorMessage = "Model field is required")]
@@ -31,17 +34,7 @@ namespace OnlineShop.Application.ViewModels
         public string ScreenResolution { get; set; }
         [Required(ErrorMessage = "Description field is required")]
         public string Description { get; set; }
+        [Required(ErrorMessage = "Warranty field is required")]
         public Varranty Warranty { get; set; }
-        [MaxLength(3, ErrorMessage ="You cant add more than 3 images")]
-        [MinLength(1, ErrorMessage ="You have to add at least 1 image")]
-        public List<IFormFile> Images { get; set; }
-
-        [Required(ErrorMessage = "Ammount field is required")]
-        public int Ammount { get; set; }
-        public AddProductViewModel()
-        {
-            Images = new List<IFormFile>();
-        }
-
     }
 }

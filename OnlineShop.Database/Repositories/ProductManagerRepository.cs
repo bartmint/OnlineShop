@@ -26,8 +26,7 @@ namespace OnlineShop.Infrastructure.Repositories
             _ctx.Products.Remove(entity);
             return _ctx.SaveChanges();
         }
-        public async Task<int> UpdateProduct(Product product)//zmiana na asynchroniczne pozwolilo na pozbycie sie bledu kiedy chcialem dwa razy
-                                                             //edytowac produkt, wywalalo blad ze korzysta podwojnie z db context
+        public async Task<int> UpdateProduct(Product product)
         {
             _ctx.Products.Update(product);
             await _ctx.SaveChangesAsync();

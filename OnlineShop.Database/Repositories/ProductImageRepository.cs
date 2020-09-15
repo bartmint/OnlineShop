@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace OnlineShop.Infrastructure.Repositories
 {
@@ -48,10 +49,11 @@ namespace OnlineShop.Infrastructure.Repositories
             return uniqueList;
 
         }
-        public void RemoveItems(int id)
+        public async Task RemoveItems(int id)
         {
-            var items = _ctx.Images.Where(p => p.ProductId == id).ToList();
+            var items = _ctx.Images.Where(p => p.ProductId == id);
             _ctx.RemoveRange(items);
+            await _ctx.SaveChangesAsync();
         }
 
 

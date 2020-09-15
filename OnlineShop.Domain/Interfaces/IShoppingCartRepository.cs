@@ -11,5 +11,6 @@ namespace OnlineShop.Domain.Interfaces
         List<ShoppingCartItem> GetShoppingCartItems();
         Task ClearCart();
         decimal GetShoppingCartTotal();
+        Task<int> GetShoppingCartAmmount();
     }
 }

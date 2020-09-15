@@ -11,7 +11,7 @@ namespace OnlineShop.Application.Interfaces
     {
         void AddToCart(int id);
         int RemoveFromCart(int id);
-        CartItemsViewModel GetShoppingCartItems();
+        CartItemsVM GetShoppingCartItems();
         Task ClearCart();
         decimal GetShoppingCartTotal();
     }

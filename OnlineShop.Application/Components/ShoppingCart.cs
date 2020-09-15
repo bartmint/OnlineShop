@@ -19,9 +19,8 @@ namespace OnlineShop.Application.Components
         }
         public IViewComponentResult Invoke()
         {
-            var list = _shoppingCartRepository.GetShoppingCartItems();
-            int ammount = list.Count;
-            return View(ammount);
+            var ammount = _shoppingCartRepository.GetShoppingCartAmmount();
+            return View(ammount.Result);
         }
     }
 }

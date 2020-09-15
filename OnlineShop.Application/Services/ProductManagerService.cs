@@ -1,5 +1,6 @@
 ﻿using OnlineShop.Application.Interfaces;
 using OnlineShop.Application.ViewModels;
+using OnlineShop.Application.ViewModels.Product;
 using OnlineShop.Domain.Interfaces;
 using OnlineShop.Domain.Models;
 using System;
@@ -21,7 +22,7 @@ namespace OnlineShop.Application.Services
             _imageRepository = imageRepository;
             _ammountRepository = ammountRepository;
         }
-        public async Task<int> AddProduct(AddProductViewModel product)
+        public async Task<int> AddProduct(AddProductVM product)//do poprawy
         {
             Ammount quantity = new Ammount()
             {
@@ -59,7 +60,7 @@ namespace OnlineShop.Application.Services
         }
         
 
-        public async Task<int> UpdateProduct(EditProductViewModel product)
+        public async Task<int> UpdateProduct(EditProductVM product)
         {
             Ammount quantity = new Ammount()
             {
@@ -72,7 +73,7 @@ namespace OnlineShop.Application.Services
             List<string> images = _imageRepository.AddPathToPhoto(product.Images);
             if (images.Count != 0)
             {
-                _imageRepository.RemoveItems(product.Id);
+                await _imageRepository.RemoveItems(product.Id);
             }
             Product model = new Product()
             {

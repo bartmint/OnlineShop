@@ -16,6 +16,7 @@ namespace OnlineShop.UI.Controllers
         {
             _checkoutService = checkoutService;
         }
+        [HttpGet]
         public IActionResult Order()
         {
             return View();
@@ -39,10 +40,6 @@ namespace OnlineShop.UI.Controllers
         public IActionResult OrderComplete()
         {
             ViewBag.CheckoutCompleteMessage = "Thanks for your order";
-            return View();
-        }
-        public IActionResult fasdfa()
-        {
             return View();
         }
     }

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace OnlineShop.Application.ViewModels
 {
-    public class CartItemsViewModel
+    public class CartItemsVM
     {
-        public CartItemsViewModel()
+        public CartItemsVM()
         {
             CartItems = new List<ShoppingCartItem>();
         }

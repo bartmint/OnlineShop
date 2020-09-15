@@ -1,12 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace OnlineShop.Domain.Interfaces
 {
     public interface IProductImageRepository
     {
         List<string> AddPathToPhoto(List<IFormFile> images);
-        void RemoveItems(int id);
+        Task RemoveItems(int id);
 
     }
 }

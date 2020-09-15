@@ -18,7 +18,6 @@ namespace OnlineShop.Infrastructure.Repositories
         private readonly ApplicationDb _ctx;
         private readonly ISessionSettings _session;
         private static string ShoppingCartId { get; set; }
-        public const string CartSessionKey = "CartId";
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
 
@@ -115,6 +114,11 @@ namespace OnlineShop.Infrastructure.Repositories
             var total = _ctx.CartItems
                 .Where(s => s.CartId == ShoppingCartId)
                 .Select(s => s.Product.Value * s.Quantity).Sum();
+            return total;
+        }
+        public async Task<int> GetShoppingCartAmmount()
+        {
+            var total = await _ctx.CartItems.Where(s => s.CartId == ShoppingCartId).CountAsync();
             return total;
         }
     }

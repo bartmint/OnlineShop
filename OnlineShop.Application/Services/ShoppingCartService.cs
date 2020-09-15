@@ -13,7 +13,6 @@ namespace OnlineShop.Application.Services
     {
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IProductManager _productManager;
-        private readonly ISessionSettings _session;
 
         public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductManager productManager)
         {
@@ -33,15 +32,13 @@ namespace OnlineShop.Application.Services
            await _shoppingCartRepository.ClearCart();
         }
 
-        public CartItemsViewModel GetShoppingCartItems()
+        public CartItemsVM GetShoppingCartItems()
         {
-            CartItemsViewModel model = new CartItemsViewModel()
+            CartItemsVM model = new CartItemsVM
             {
-                CartItems = new List<ShoppingCartItem>(),
-                ShoppingCartTotal = _shoppingCartRepository.GetShoppingCartTotal()
+                ShoppingCartTotal = _shoppingCartRepository.GetShoppingCartTotal(),
+                CartItems = _shoppingCartRepository.GetShoppingCartItems()
             };
-            var list= _shoppingCartRepository.GetShoppingCartItems();
-            model.CartItems = list;
             return model;
         }
 

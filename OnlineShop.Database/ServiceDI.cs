@@ -22,7 +22,7 @@ namespace OnlineShop.Infrastructure
 
 
 
-            services.AddScoped<ISessionSettings, SessionSettings>();
+            services.AddSingleton<ISessionSettings, SessionSettings>();//metoda napisana w ten sposob, ze nie wazne jak dodamy
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.ModelBinding;
 using OnlineShop.Application.Interfaces;
 using OnlineShop.Application.Services;
 using OnlineShop.Application.ViewModels;
+using OnlineShop.Application.ViewModels.Product;
 using OnlineShop.Domain.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace OnlineShop.UI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddProduct(AddProductViewModel product)
+        public async Task<IActionResult> AddProduct(AddProductVM product)
         {
             if (ModelState.IsValid)
             {
@@ -40,7 +41,7 @@ namespace OnlineShop.UI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateProduct(EditProductViewModel product)
+        public async Task<IActionResult> UpdateProduct(EditProductVM product)
         {
             if (ModelState.IsValid)
             {
