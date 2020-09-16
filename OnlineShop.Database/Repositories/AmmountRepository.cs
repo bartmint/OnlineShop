@@ -20,7 +20,7 @@ namespace OnlineShop.Infrastructure.Repositories
 
         public  Task<int> DeleteProduct(int id)
         {
-            var ammount = _ctx.Ammounts.Where(i => i.ProductId == id).FirstOrDefault();
+            var ammount = _ctx.Ammounts.FirstOrDefault(p => p.ProductId == id);
             _ctx.Ammounts.Remove(ammount);
             return  _ctx.SaveChangesAsync();
         }

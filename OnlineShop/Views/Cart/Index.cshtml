@@ -1,4 +1,4 @@
-﻿@model OnlineShop.Application.ViewModels.CartItemsVM
+﻿@model OnlineShop.Application.ViewModels.CartItems.ListCartItemsForVM
 <link href="~/css/CartStyle.css" rel="stylesheet" />
 @if (Model == null)
 {
@@ -38,6 +38,6 @@ else
         <p>Products quantity: @Model.CartItems.Count</p>
         <p>Total payment: @Model.ShoppingCartTotal.ToString("c")</p>
         <div class="but_down btn btn-danger">@Html.ActionLink("Clear cart", "ClearShoppingCart", "Cart")</div>
-        <div class="but_down btn btn-success">@Html.ActionLink("Complete Order", "Order", "Checkout")</div>
+        <div class="but_down btn btn-success">@Html.ActionLink("Complete Order", "Index", "Checkout")</div>
     </div>
 }

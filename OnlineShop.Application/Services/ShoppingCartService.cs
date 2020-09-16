@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using OnlineShop.Domain.Models;
 using OnlineShop.Application.ViewModels;
+using OnlineShop.Application.ViewModels.CartItems;
 
 namespace OnlineShop.Application.Services
 {
@@ -32,9 +33,9 @@ namespace OnlineShop.Application.Services
            await _shoppingCartRepository.ClearCart();
         }
 
-        public CartItemsVM GetShoppingCartItems()
+        public ListCartItemsForVM GetShoppingCartItems()
         {
-            CartItemsVM model = new CartItemsVM
+            ListCartItemsForVM model = new ListCartItemsForVM
             {
                 ShoppingCartTotal = _shoppingCartRepository.GetShoppingCartTotal(),
                 CartItems = _shoppingCartRepository.GetShoppingCartItems()

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
 using OnlineShop.Application.Helpers;
 using OnlineShop.Application.Interfaces;
 using OnlineShop.Domain.Interfaces;
@@ -20,9 +21,11 @@ namespace OnlineShop.Application.Services
             _repository = repository;
         }
 
-        public async  Task<IEnumerable<Product>> GetProducts()
+        public async  Task<List<Product>> GetProducts(int pageSize, int pageNumber, string searchString, string sortOrder, string currentFilter)
         {
-            var items = await _repository.GetProducts();//pobieram produkty
+            //tutaj zostaja przekazane odpowiednie filtry + paginacja i dopiero przygotowane dane zostana pobrane z bazy
+            var items = await _repository.GetProducts().Where(p => p.Model.Contains(searchString)).ToListAsync();
+
             return items;
         }
         public Product GetProductById(int id)

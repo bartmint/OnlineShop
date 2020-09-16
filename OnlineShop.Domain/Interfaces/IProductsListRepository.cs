@@ -9,7 +9,7 @@ namespace OnlineShop.Domain.Interfaces
 {
     public interface IProductsListRepository : ICommonProductsRepo
     {
-       Task<IEnumerable<Product>> GetProducts();
+       IQueryable<Product> GetProducts();
         //Task<IEnumerable<Product>> GetProductsSorted(string category, IQueryable<Product> products);
     }
 }

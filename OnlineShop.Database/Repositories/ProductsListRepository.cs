@@ -19,9 +19,9 @@ namespace OnlineShop.Infrastructure.Repositories
         //{
         //    return await _ctx.Products.Include(p => p.Paths).Include(a => a.Ammount).Take(5).ToListAsync();
         //}
-        public async Task<IEnumerable<Product>> GetProducts()
+        public IQueryable<Product> GetProducts()
         {
-            return await _ctx.Products.Include(p => p.Paths).Include(a => a.Ammount).ToListAsync();
+            return  _ctx.Products;
         }
 
         /* public Task<IEnumerable<Product>> GetProductsSorted(string category, IQueryable<Product> products)

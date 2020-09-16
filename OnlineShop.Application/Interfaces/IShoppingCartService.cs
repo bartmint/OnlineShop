@@ -1,4 +1,5 @@
 ﻿using OnlineShop.Application.ViewModels;
+using OnlineShop.Application.ViewModels.CartItems;
 using OnlineShop.Domain.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ namespace OnlineShop.Application.Interfaces
     {
         void AddToCart(int id);
         int RemoveFromCart(int id);
-        CartItemsVM GetShoppingCartItems();
+        ListCartItemsForVM GetShoppingCartItems();
         Task ClearCart();
         decimal GetShoppingCartTotal();
     }

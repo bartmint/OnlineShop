@@ -3,14 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace OnlineShop.Application.ViewModels
+namespace OnlineShop.Application.ViewModels.CartItems
 {
-    public class CartItemsVM
+    public class ListCartItemsForVM
     {
-        public CartItemsVM()
-        {
-            CartItems = new List<ShoppingCartItem>();
-        }
         public List<ShoppingCartItem> CartItems { get; set; }
         public decimal ShoppingCartTotal { get; set; }
     }

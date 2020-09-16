@@ -17,12 +17,12 @@ namespace OnlineShop.UI.Controllers
             _checkoutService = checkoutService;
         }
         [HttpGet]
-        public IActionResult Order()
+        public IActionResult Index()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Order(Order order)
+        public async Task<IActionResult> Index(Order order)
         {
             if (ModelState.IsValid)
             {

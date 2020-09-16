@@ -4,11 +4,10 @@
     ViewData["Title"] = "UpdateProduct";
 }
 
-<h1>Update product</h1>
-<hr />
-<form asp-action="UpdateProduct" asp-controller="Administration" enctype="multipart/form-data" name="input" method="post">
-    <div class="container">
-        <div class="col-md-6 order-md-1"/>
+<h4>Update product</h4>
+<div class="container">
+    <div class="col-md-6 order-md-1" />
+    <form asp-action="UpdateProduct" asp-controller="Administration" enctype="multipart/form-data" name="input" method="post">
         <div class="mb-2">
             <label asp-for="ProductionCompany" class="control-label"></label>
             <div class="mb-2">
@@ -96,8 +95,9 @@
             <span asp-validation-for="Images" class="text-danger"></span>
         </div>
         <button type="submit" asp-action="UpdateProduct" asp-controller="Administration">Update</button>
-    </div>
-</form>
+    </form>
+</div>
+
 
 
 

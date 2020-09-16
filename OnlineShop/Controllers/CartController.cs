@@ -18,7 +18,7 @@ namespace OnlineShop.UI.Controllers
 
         public CartController(IShoppingCartService shoppingCartService)=> _shoppingCartService = shoppingCartService;
         
-        public IActionResult CartRepository()
+        public IActionResult Index()
         {
             var model = _shoppingCartService.GetShoppingCartItems();
             if (model.CartItems.Count != 0)
@@ -34,7 +34,7 @@ namespace OnlineShop.UI.Controllers
             {
                 _shoppingCartService.AddToCart(Id.Value);
                 //return RedirectToAction("Index","Home");//zmienic na liste produktow
-                return RedirectToAction("CartRepository");
+                return RedirectToAction("Index");
             }
             return Json("Add to shopping cart -> failed");
             
@@ -44,7 +44,7 @@ namespace OnlineShop.UI.Controllers
             if (Id.HasValue)
             {
                 _shoppingCartService.RemoveFromCart(Id.Value);
-                return RedirectToAction("CartRepository");
+                return RedirectToAction("Index");
             }
             return Json("RemoveFromShoppingCart -> failed");
         }

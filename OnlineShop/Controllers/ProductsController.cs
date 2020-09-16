@@ -16,6 +16,18 @@ namespace OnlineShop.UI.Controllers
         {
             _productsListService = productsListService;
         }
+        [HttpGet]
+        public IActionResult Index() 
+        {
+            var products = _productsListService.GetProducts();
+            return View(products);
+        }
+        [HttpPost]
+        public IActionResult Index(int pageSize, int pageNumber, string searchString, string sortOrder, string currentFilter, string category)
+        {
+            var model = _productsListService.GetProducts();
+            return View(model);        
+        }
         public IActionResult ProductDetails(int? id)
         {
             var model = _productsListService.GetProductById(id.Value);
@@ -24,11 +36,6 @@ namespace OnlineShop.UI.Controllers
                 return View(model);
             }
             return NotFound(404);
-        }
-        public IActionResult ListOfProducts() 
-        {
-            var products = _productsListService.GetProducts();
-            return View(products);
         }
     }
 }
