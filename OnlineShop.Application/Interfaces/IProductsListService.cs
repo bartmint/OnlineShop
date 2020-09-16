@@ -9,7 +9,7 @@ namespace OnlineShop.Application.Interfaces
 {
     public interface IProductsListService
     {
-       Task<List<Product>> GetProducts(int pageSize, int pageNumber, string searchString, string sortOrder, string currentFilter);
+       Task<List<Product>> GetProducts(/*int pageSize, int pageNumber, string searchString, string sortOrder, string currentFilter*/);
        Product GetProductById(int id);
     }
 }

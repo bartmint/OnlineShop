@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using OnlineShop.Domain.Models;
 using OnlineShop.Application.ViewModels;
 using OnlineShop.Application.ViewModels.CartItems;
+using AutoMapper;
+using OnlineShop.Application.Helpers.Refactors;
 
 namespace OnlineShop.Application.Services
 {
@@ -19,7 +21,6 @@ namespace OnlineShop.Application.Services
         {
             _shoppingCartRepository = shoppingCartRepository;
             _productManager = productManager;
-            
         }
         public void AddToCart(int id)
         {
@@ -35,11 +36,11 @@ namespace OnlineShop.Application.Services
 
         public ListCartItemsForVM GetShoppingCartItems()
         {
-            ListCartItemsForVM model = new ListCartItemsForVM
-            {
-                ShoppingCartTotal = _shoppingCartRepository.GetShoppingCartTotal(),
-                CartItems = _shoppingCartRepository.GetShoppingCartItems()
-            };
+            ListCartItemsForVM model = new ListCartItemsForVM();
+            model.ShoppingCartTotalPayment = _shoppingCartRepository.GetShoppingCartTotal();
+            model.CartItems = RefactorToCartItemVM.RefactorFrom(_shoppingCartRepository.GetShoppingCartItems());
+            model.TotalCartItems = model.CartItems.Count;
+
             return model;
         }
 

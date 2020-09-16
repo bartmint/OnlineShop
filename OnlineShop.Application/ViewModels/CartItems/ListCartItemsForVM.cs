@@ -7,7 +7,8 @@ namespace OnlineShop.Application.ViewModels.CartItems
 {
     public class ListCartItemsForVM
     {
-        public List<ShoppingCartItem> CartItems { get; set; }
-        public decimal ShoppingCartTotal { get; set; }
+        public List<CartItemForVm> CartItems { get; set; }
+        public decimal ShoppingCartTotalPayment { get; set; }
+        public int TotalCartItems { get; set; }
     }
 }
