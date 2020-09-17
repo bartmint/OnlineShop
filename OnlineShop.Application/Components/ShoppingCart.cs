@@ -9,7 +9,7 @@ using System.Text;
 
 namespace OnlineShop.Application.Components
 {
-    public class ShoppingCart:ViewComponent, IShoppingCart
+    public class ShoppingCart:ViewComponent, InvokeCart
     {
         private readonly IShoppingCartRepository _shoppingCartRepository;
 

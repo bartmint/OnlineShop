@@ -1,13 +1,9 @@
-﻿<div class="dropdown ml-5 mt-2">
-
-
+﻿@model List<Producent>
+<div class="dropdown ml-5 mt-2">
     @foreach (var category in Model)
     {
-        <a class="dropdown-item" asp-controller="Home" asp-action="fullProductsList"
-           asp-route-searchString="@category">@category</a>
+        <a class="dropdown-item" asp-controller="Products" asp-action="Index" asp-route-category="@category">@category</a>
     }
-    <a class="ml-5 mt-2" style="color:#111;" asp-controller="Home" asp-action="fullProductsList" asp-route-category="">View all products</a>
-
-
+    <a class="ml-5 mt-2" style="color:#111;" asp-controller="Products" asp-action="Index">View all products</a>
 </div>
 

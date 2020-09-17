@@ -6,6 +6,7 @@ using OnlineShop.Application.Helpers.Refactors;
 using OnlineShop.Application.Interfaces;
 using OnlineShop.Application.ViewModels.CartItems;
 using OnlineShop.Application.ViewModels.Product;
+using OnlineShop.Domain.Enums.ProductItems;
 using OnlineShop.Domain.Interfaces;
 using OnlineShop.Domain.Models;
 using System;
@@ -33,10 +34,19 @@ namespace OnlineShop.Application.Services
             {
                 pageNumber=1;
                 items = items.Where(s => s.Model.Contains(searchString)).Include(e => e.Paths);
+                    //|| s.ProductionCompany.ToString().Contains(searchString)).Include(e => e.Paths);
             }
             else
             {
                 searchString = currentFilter;
+            }
+            if (!String.IsNullOrEmpty(category))
+            {
+                foreach (var prod in (Producent[])Enum.GetValues(typeof(Producent)))
+                {
+                    if (category == prod.ToString())
+                        items = items.Where(p => p.ProductionCompany == prod);
+                }
             }
 
             Paginate paginate = new Paginate(items.Count(),pageNumber.Value,pageSize);
@@ -63,7 +73,8 @@ namespace OnlineShop.Application.Services
                     break;
                 default:
                     items = items.OrderBy(s => s.Id);
-                    paginate.Error= $"Sorry, we cant find product:     {searchString}";
+                    string searched = String.IsNullOrEmpty(searchString) ? category : searchString;
+                    paginate.Error= $"Sorry, we cant find product:     {searched}";
                     break;
             }
 
@@ -80,13 +91,3 @@ namespace OnlineShop.Application.Services
         }
     }
 }
-
-
-//var productsList = new ListProductsVM()
-//{
-//    PageSize = pageSize,
-//    CurrentPage = pageNumber.Value,
-//    SearchString = searchString,
-//    Products = RefactorToProductForListVM.RefactorFrom(productsToShow),
-//    Count = productsToShow.Count
-//};

@@ -16,7 +16,8 @@ namespace OnlineShop.Infrastructure
             services.AddTransient<IProductManagerService, ProductManagerService>();
             services.AddTransient<IShoppingCartService, ShoppingCartService>();
             services.AddTransient<IProductsListService, ProductsListService>();
-            services.AddTransient<IShoppingCart, ShoppingCart>();
+            services.AddTransient<InvokeCart, ShoppingCart>();
+            services.AddTransient<InvokeCategories, CategoryMenu>();
             services.AddTransient<ICheckoutService, CheckoutService>();
             return services;
         }

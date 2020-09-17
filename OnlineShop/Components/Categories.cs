@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewComponents;
 using OnlineShop.Application.ComponentsAbstract;
 using System;
 using System.Collections.Generic;
@@ -8,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.UI.Components
 {
-    public class ShoppingCartSummary:ViewComponent
+    public class Categories
     {
-        private readonly InvokeCart _cart;
+        private readonly InvokeCategories _categories;
 
-        public ShoppingCartSummary(InvokeCart cart)
+        public Categories(InvokeCategories categories)
         {
-            _cart = cart;
+            _categories = categories;
         }
         public IViewComponentResult Invoke()
         {
-            return _cart.Invoke();
+            return _categories.Invoke();
         }
     }
 }

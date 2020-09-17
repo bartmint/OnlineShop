@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OnlineShop.Application.ComponentsAbstract
 {
-    public interface IShoppingCart
+    public interface InvokeCart
     {
         IViewComponentResult Invoke();
     }

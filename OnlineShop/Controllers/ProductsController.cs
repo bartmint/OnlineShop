@@ -24,13 +24,8 @@ namespace OnlineShop.UI.Controllers
             ViewData["YearProductionSortParm"] = sortOrder == "Rok produkcji" ? "year_desc" : "Rok produkcji";
             ViewData["currentSearch"] = searchString; //obsluguje pole wyszukiwania
             ViewData["currentSort"] = sortOrder;//obsluguje filtry
-            //to mozna przeniesc do serwisu
-            if (!pageNumber.HasValue)
-            {
-                pageNumber = 1;
-            }
-
-            var model = _productsListService.GetProducts(sortOrder, searchString, pageNumber.Value, currentFilter, category);
+           
+            var model = _productsListService.GetProducts(sortOrder, searchString, pageNumber ?? 1, currentFilter, category);
             return View(model);        
         }
         public IActionResult ProductDetails(int? id)

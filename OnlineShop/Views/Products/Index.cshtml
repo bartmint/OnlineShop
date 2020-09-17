@@ -18,7 +18,7 @@
         <a class="filter-tag" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Name</a>
         <a class="filter-tag" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Price</a>
         <a class="filter-tag" asp-action="Index" asp-route-sortOrder="@ViewData["YearProductionSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Latest</a>
-        @*@await Component.InvokeAsync("CategoryMenu")*@
+        @await Component.InvokeAsync("CategoryMenu")
     </div>
     <a class="special" asp-action="Index">Clear Filters</a>
 </div>
@@ -36,7 +36,7 @@
                 <img src=@item.PathToImage class="img_resize" asp-append-version="true" />
                 <h2 class="h2_list_view">@item.Producent</h2>
                 <p class="price">@item.Model</p>
-                <p class="price">@item.Value.ToString("c")</p>@*price.ToString("c") zwróci konkretnę sumę z jednostką w zależności od tego jak skonfigurowany jest server np pl*@
+                <p class="price">@item.Value.ToString("c")</p>
                 <a asp-action="AddToShoppingCart" class="btn_in_oneitem" asp-controller="Cart" asp-route-id="@item.ProductId">Add to Cart</a>
             </div>
         </a>
