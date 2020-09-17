@@ -5,9 +5,9 @@ using System.Text;
 
 namespace OnlineShop.Application.ViewModels.CartItems
 {
-    public class ListCartItemsForVM
+    public class ListCartItemsVM
     {
-        public List<CartItemForVm> CartItems { get; set; }
+        public List<CartItemForListVm> CartItems { get; set; }
         public decimal ShoppingCartTotalPayment { get; set; }
         public int TotalCartItems { get; set; }
     }

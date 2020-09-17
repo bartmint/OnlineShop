@@ -1,15 +1,11 @@
-﻿using OnlineShop.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using OnlineShop.Application.ViewModels.Product;
+using OnlineShop.Domain.Models;
 
 namespace OnlineShop.Application.Interfaces
 {
     public interface IProductsListService
     {
-       Task<List<Product>> GetProducts(/*int pageSize, int pageNumber, string searchString, string sortOrder, string currentFilter*/);
+        ListProductsVM GetProducts(string sortOrder, string searchString, int? pageNumber, string currentFilter, string category);
        Product GetProductById(int id);
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace OnlineShop.Application.ViewModels.CartItems
 {
-    public class CartItemForVm
+    public class CartItemForListVm
     {
         public int ProductId { get; set; }
         public string Model { get; set; }

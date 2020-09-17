@@ -12,7 +12,7 @@ namespace OnlineShop.Application.Interfaces
     {
         void AddToCart(int id);
         int RemoveFromCart(int id);
-        ListCartItemsForVM GetShoppingCartItems();
+        ListCartItemsVM GetShoppingCartItems();
         Task ClearCart();
         decimal GetShoppingCartTotal();
     }

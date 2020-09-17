@@ -1,0 +1,76 @@
+﻿@model OnlineShop.Application.ViewModels.Product.ListProductsVM
+@{
+    ViewData["Title"] = "Products";
+}
+<link href="~/css/Products.css" rel="stylesheet" />
+
+<div class="filters">
+    <form asp-action="Index" method="get">
+        <div class="form-action no-color">
+            <h5>Find by model</h5>
+            <p>
+                <input type="text" name="searchString" value="@ViewData["currentFilter"]" />
+                <input type="submit" value="Search" class="btn btn-default" />
+        </div>
+    </form>
+    <div>
+        <h6>Sort By</h6>
+        <a class="filter-tag" asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Name</a>
+        <a class="filter-tag" asp-action="Index" asp-route-sortOrder="@ViewData["PriceSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Price</a>
+        <a class="filter-tag" asp-action="Index" asp-route-sortOrder="@ViewData["YearProductionSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Latest</a>
+        @*@await Component.InvokeAsync("CategoryMenu")*@
+    </div>
+    <a class="special" asp-action="Index">Clear Filters</a>
+</div>
+
+<div class="main-products">
+    <div class="list_view">
+
+
+
+        <div></div>
+        @foreach (var item in Model.Products)
+        {
+        <a class="main-a" asp-action="ProductDetails" asp-route-Id="@item.ProductId">
+            <div class="one_item">
+                <img src=@item.PathToImage class="img_resize" asp-append-version="true" />
+                <h2 class="h2_list_view">@item.Producent</h2>
+                <p class="price">@item.Model</p>
+                <p class="price">@item.Value.ToString("c")</p>@*price.ToString("c") zwróci konkretnę sumę z jednostką w zależności od tego jak skonfigurowany jest server np pl*@
+                <a asp-action="AddToShoppingCart" class="btn_in_oneitem" asp-controller="Cart" asp-route-id="@item.ProductId">Add to Cart</a>
+            </div>
+        </a>
+        }
+
+        @if (Model.Count == 0)
+        {
+            <p>@Model.Paginate.Error </p>
+        }
+
+    </div>
+    <div class="nawi">
+        @{
+            var prevDisabled = !Model.Paginate.HasPreviousPage ? "disabled" : "";
+            var nextDisabled = !Model.Paginate.HasNextPage ? "disabled" : "";
+        }
+
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.Paginate.PageIndex - 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-action="Index"
+           asp-route-sortOrder="@ViewData["CurrentSort"]"
+           asp-route-pageNumber="@(Model.Paginate.PageIndex + 1)"
+           asp-route-currentFilter="@ViewData["CurrentFilter"]"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
+    </div>
+</div>
+
+
+
+

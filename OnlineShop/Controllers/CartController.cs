@@ -28,18 +28,18 @@ namespace OnlineShop.UI.Controllers
             ViewBag.Cart = "Your Cart is empty";
             return View();
         }
-        public  IActionResult AddToShoppingCart(int? Id)
+        public  IActionResult AddToShoppingCart(int? id)
         {
-            if (Id.HasValue)
+            if (id.HasValue)
             {
-                _shoppingCartService.AddToCart(Id.Value);
+                _shoppingCartService.AddToCart(id.Value);
                 //return RedirectToAction("Index","Home");//zmienic na liste produktow
                 return RedirectToAction("Index");
             }
             return Json("Add to shopping cart -> failed");
             
         }
-        public IActionResult RemoveFromCart(int? Id)
+        public IActionResult RemoveFromCart(int? Id)//pozmieniac na male id
         {
             if (Id.HasValue)
             {
@@ -51,7 +51,7 @@ namespace OnlineShop.UI.Controllers
         public IActionResult ClearShoppingCart()
         {
             _shoppingCartService.ClearCart();
-            return RedirectToAction("ListOfProducts","Products");
+            return RedirectToAction("Index","Products");
         }
         
     }

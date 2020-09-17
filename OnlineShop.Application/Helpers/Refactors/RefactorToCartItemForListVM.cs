@@ -6,14 +6,14 @@ using System.Text;
 
 namespace OnlineShop.Application.Helpers.Refactors
 {
-    public static class RefactorToCartItemVM
+    public static class RefactorToCartItemForListVM
     {
-        public static List<CartItemForVm> RefactorFrom(List<ShoppingCartItem> items)
+        public static List<CartItemForListVm> RefactorFrom(List<ShoppingCartItem> items)
         {
-            List<CartItemForVm> model = new List<CartItemForVm>();
+            List<CartItemForListVm> model = new List<CartItemForListVm>();
             foreach (var item in items)
             {
-                CartItemForVm cart = new CartItemForVm();
+                CartItemForListVm cart = new CartItemForListVm();
                 cart.ProductId = item.ProductId;
                 cart.Model = item.Product.Model;
                 cart.QuantityInCart = item.Quantity;

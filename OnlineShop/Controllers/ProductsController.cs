@@ -16,16 +16,21 @@ namespace OnlineShop.UI.Controllers
         {
             _productsListService = productsListService;
         }
-        [HttpGet]
-        public IActionResult Index() 
+        
+        public IActionResult Index(int? pageNumber, string sortOrder, string searchString,string currentFilter, string category)
         {
-            var products = _productsListService.GetProducts();
-            return View(products);
-        }
-        [HttpPost]
-        public IActionResult Index(int pageSize, int pageNumber, string searchString, string sortOrder, string currentFilter, string category)
-        {
-            var model = _productsListService.GetProducts();
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
+            ViewData["YearProductionSortParm"] = sortOrder == "Rok produkcji" ? "year_desc" : "Rok produkcji";
+            ViewData["currentSearch"] = searchString; //obsluguje pole wyszukiwania
+            ViewData["currentSort"] = sortOrder;//obsluguje filtry
+            //to mozna przeniesc do serwisu
+            if (!pageNumber.HasValue)
+            {
+                pageNumber = 1;
+            }
+
+            var model = _productsListService.GetProducts(sortOrder, searchString, pageNumber.Value, currentFilter, category);
             return View(model);        
         }
         public IActionResult ProductDetails(int? id)

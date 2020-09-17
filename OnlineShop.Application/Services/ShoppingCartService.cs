@@ -34,11 +34,11 @@ namespace OnlineShop.Application.Services
            await _shoppingCartRepository.ClearCart();
         }
 
-        public ListCartItemsForVM GetShoppingCartItems()
+        public ListCartItemsVM GetShoppingCartItems()
         {
-            ListCartItemsForVM model = new ListCartItemsForVM();
+            ListCartItemsVM model = new ListCartItemsVM();
             model.ShoppingCartTotalPayment = _shoppingCartRepository.GetShoppingCartTotal();
-            model.CartItems = RefactorToCartItemVM.RefactorFrom(_shoppingCartRepository.GetShoppingCartItems());
+            model.CartItems = RefactorToCartItemForListVM.RefactorFrom(_shoppingCartRepository.GetShoppingCartItems());
             model.TotalCartItems = model.CartItems.Count;
 
             return model;
