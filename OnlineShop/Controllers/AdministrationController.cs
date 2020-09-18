@@ -26,7 +26,7 @@ namespace OnlineShop.UI.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> AddProduct(AddProductVM product)
+        public async Task<IActionResult> AddProduct(NewProductVM product)
         {
             if (ModelState.IsValid)
             {
@@ -38,10 +38,11 @@ namespace OnlineShop.UI.Controllers
         [HttpGet]
         public IActionResult UpdateProduct(int? id)//musi byc id bo przy kliknieciu przycisku update zwraca wartosc is invalid ''
         {
-            return View();
+            var model = _productManagerService.GetProduct(id.Value);
+            return View(model);
         }
         [HttpPost]
-        public async Task<IActionResult> UpdateProduct(EditProductVM product)
+        public async Task<IActionResult> UpdateProduct(NewProductVM product)
         {
             if (ModelState.IsValid)
             {

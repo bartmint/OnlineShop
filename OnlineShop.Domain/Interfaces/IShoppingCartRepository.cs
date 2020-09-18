@@ -1,5 +1,6 @@
 ﻿using OnlineShop.Domain.Models;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace OnlineShop.Domain.Interfaces
@@ -8,7 +9,7 @@ namespace OnlineShop.Domain.Interfaces
     {
         void AddToCart(Product product, int quantity);
         int RemoveFromCart(Product product);
-        List<ShoppingCartItem> GetShoppingCartItems();
+        IQueryable<ShoppingCartItem> GetShoppingCartItems();
         Task ClearCart();
         decimal GetShoppingCartTotal();
         Task<int> GetShoppingCartAmmount();

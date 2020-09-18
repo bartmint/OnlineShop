@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using OnlineShop.Application.Components;
 using OnlineShop.Application.ComponentsAbstract;
@@ -6,6 +7,7 @@ using OnlineShop.Application.Interfaces;
 using OnlineShop.Application.Services;
 using OnlineShop.Domain.Interfaces;
 using System.Net.Http;
+using System.Reflection;
 
 namespace OnlineShop.Infrastructure
 {
@@ -19,6 +21,7 @@ namespace OnlineShop.Infrastructure
             services.AddTransient<InvokeCart, ShoppingCart>();
             services.AddTransient<InvokeCategories, CategoryMenu>();
             services.AddTransient<ICheckoutService, CheckoutService>();
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
             return services;
         }
     }

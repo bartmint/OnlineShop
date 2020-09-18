@@ -9,6 +9,8 @@ using OnlineShop.Application.ViewModels;
 using OnlineShop.Application.ViewModels.CartItems;
 using AutoMapper;
 using OnlineShop.Application.Helpers.Refactors;
+using AutoMapper.QueryableExtensions;
+using System.Linq;
 
 namespace OnlineShop.Application.Services
 {
@@ -16,11 +18,13 @@ namespace OnlineShop.Application.Services
     {
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IProductManager _productManager;
+        private readonly IMapper _mapper;
 
-        public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductManager productManager)
+        public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductManager productManager, IMapper mapper)
         {
             _shoppingCartRepository = shoppingCartRepository;
             _productManager = productManager;
+            _mapper = mapper;
         }
         public void AddToCart(int id)
         {
@@ -38,7 +42,10 @@ namespace OnlineShop.Application.Services
         {
             ListCartItemsVM model = new ListCartItemsVM();
             model.ShoppingCartTotalPayment = _shoppingCartRepository.GetShoppingCartTotal();
-            model.CartItems = RefactorToCartItemForListVM.RefactorFrom(_shoppingCartRepository.GetShoppingCartItems());
+            model.CartItems = (_shoppingCartRepository.GetShoppingCartItems().ProjectTo<CartItemForListVm>(_mapper.ConfigurationProvider)).ToList();
+
+
+
             model.TotalCartItems = model.CartItems.Count;
 
             return model;

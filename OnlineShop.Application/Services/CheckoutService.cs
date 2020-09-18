@@ -3,6 +3,7 @@ using OnlineShop.Domain.Interfaces;
 using OnlineShop.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -20,7 +21,7 @@ namespace OnlineShop.Application.Services
         }
         public async Task<bool> CreateOrder(Order order)
         {
-            var items = _shoppingCart.GetShoppingCartItems();
+            var items = _shoppingCart.GetShoppingCartItems().ToList();
             if (items.Count != 0)
             {
                 await _checkout.CreateOrder(order, items);

@@ -1,4 +1,5 @@
-﻿using OnlineShop.Application.Interfaces;
+﻿using AutoMapper;
+using OnlineShop.Application.Interfaces;
 using OnlineShop.Application.ViewModels;
 using OnlineShop.Application.ViewModels.Product;
 using OnlineShop.Domain.Interfaces;
@@ -15,39 +16,22 @@ namespace OnlineShop.Application.Services
         private readonly IProductManager _productManager;
         private readonly IProductImageRepository _imageRepository;
         private readonly IAmmountRepository _ammountRepository;
+        private readonly IMapper _mapper;
 
-        public ProductManagerService(IProductManager productManager, IProductImageRepository imageRepository, IAmmountRepository ammountRepository)
+        public ProductManagerService(IProductManager productManager, IProductImageRepository imageRepository, IAmmountRepository ammountRepository, IMapper mapper)
         {
             _productManager = productManager;
             _imageRepository = imageRepository;
             _ammountRepository = ammountRepository;
+            _mapper = mapper;
         }
-        public async Task<int> AddProduct(AddProductVM product)//do poprawy
+        public async Task<int> AddProduct(NewProductVM product)//do poprawy
         {
-            Ammount quantity = new Ammount()
-            {
-                Quantity = product.Ammount
-            };
+            var model = _mapper.Map<Product>(product);
+            model.Ammount = new Ammount() { Quantity = product.Ammount };
+
             List<string> images = _imageRepository.AddPathToPhoto(product.Images);
-            Product model = new Product()
-            {
-                ProductionCompany = product.ProductionCompany,
-                Model = product.Model,
-                System = product.System,
-                CPU = product.CPU,
-                MemoryType = product.MemoryType,
-                HardDrive = product.HardDrive,
-                Weight = product.Weight,
-                GraphicCard = product.GraphicCard,
-                Value = product.Value,
-                ProductionYear = product.ProductionYear,
-                ScreenResolution = product.ScreenResolution,
-                Description = product.Description,
-                Warranty = product.Warranty,
-                Ammount = quantity,
-                Paths = new List<Image>()
-            };
-            for(int i=0; i<images.Count; i++)
+            for (int i=0; i<images.Count; i++)
             {
                 var item = new Image()
                 {
@@ -55,45 +39,18 @@ namespace OnlineShop.Application.Services
                 };
                 model.Paths.Add(item);
             }
+
             int id=await _productManager.CreateProduct(model);
             return id;
         }
         
 
-        public async Task<int> UpdateProduct(EditProductVM product)
+        public async Task<int> UpdateProduct(NewProductVM product)
         {
-            Ammount quantity = new Ammount()
-            {
-                Quantity = product.Ammount
-            };
-            if (quantity.Quantity != 0)
-            {
-                await _ammountRepository.DeleteProduct(product.Id);
-            }
+            var model = _mapper.Map<Product>(product);
+            model.Ammount = new Ammount() { Quantity = product.Ammount };
+
             List<string> images = _imageRepository.AddPathToPhoto(product.Images);
-            if (images.Count != 0)
-            {
-                await _imageRepository.RemoveItems(product.Id);
-            }
-            Product model = new Product()
-            {
-                Id = product.Id,
-                ProductionCompany = product.ProductionCompany,
-                Model = product.Model,
-                System = product.System,
-                CPU = product.CPU,
-                MemoryType = product.MemoryType,
-                HardDrive = product.HardDrive,
-                Weight = product.Weight,
-                GraphicCard = product.GraphicCard,
-                Value = product.Value,
-                ProductionYear = product.ProductionYear,
-                ScreenResolution = product.ScreenResolution,
-                Description = product.Description,
-                Warranty = product.Warranty,
-                Ammount = quantity,
-                Paths = new List<Image>()
-            };
             for (int i = 0; i < images.Count; i++)
             {
                 var item = new Image()
@@ -102,12 +59,25 @@ namespace OnlineShop.Application.Services
                 };
                 model.Paths.Add(item);
             }
+
+            if(images.Count!=0)
+                await _imageRepository.RemoveItems(product.Id);
+            if(model.Ammount!=null)
+                await _ammountRepository.DeleteAmmount(product.Id);
+            
             int id =await _productManager.UpdateProduct(model);
             return id;
         }
         public  void RemoveItem(int id)
         {
             _productManager.DeleteProduct(id);
+        }
+        public NewProductVM GetProduct(int id)
+        {
+            var model = _productManager.GetProductById(id);
+            var item = _mapper.Map<NewProductVM>(model);
+
+            return  item;
         }
     }
 }

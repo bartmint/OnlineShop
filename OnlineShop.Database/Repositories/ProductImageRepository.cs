@@ -52,8 +52,10 @@ namespace OnlineShop.Infrastructure.Repositories
         public async Task RemoveItems(int id)
         {
             var items = _ctx.Images.Where(p => p.ProductId == id);
-            _ctx.RemoveRange(items);
-            await _ctx.SaveChangesAsync();
+            
+                _ctx.RemoveRange(items);
+                await _ctx.SaveChangesAsync();
+            
         }
 
 

@@ -18,11 +18,14 @@ namespace OnlineShop.Infrastructure.Repositories
             _ctx = ctx;
         }
 
-        public  Task<int> DeleteProduct(int id)
+        public async Task DeleteAmmount(int id)
         {
             var ammount = _ctx.Ammounts.FirstOrDefault(p => p.ProductId == id);
-            _ctx.Ammounts.Remove(ammount);
-            return  _ctx.SaveChangesAsync();
+           
+                _ctx.Ammounts.Remove(ammount);
+                await _ctx.SaveChangesAsync();
+            
+          
         }
     }
 }

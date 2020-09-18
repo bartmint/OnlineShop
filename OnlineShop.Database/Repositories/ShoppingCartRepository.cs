@@ -18,7 +18,7 @@ namespace OnlineShop.Infrastructure.Repositories
         private readonly ApplicationDb _ctx;
         private readonly ISessionSettings _session;
         private static string ShoppingCartId { get; set; }
-        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public IQueryable<ShoppingCartItem> ShoppingCartItems { get; set; }
 
 
         public ShoppingCartRepository(ApplicationDb ctx, ISessionSettings session)
@@ -87,7 +87,7 @@ namespace OnlineShop.Infrastructure.Repositories
             return localAmount;
         }
 
-        public List<ShoppingCartItem> GetShoppingCartItems()
+        public IQueryable<ShoppingCartItem> GetShoppingCartItems()
         {
             return ShoppingCartItems ?? (
                 ShoppingCartItems =
@@ -95,8 +95,8 @@ namespace OnlineShop.Infrastructure.Repositories
                 .Where(c => c.CartId == ShoppingCartId)
                 .Include(s => s.Product)
                 .ThenInclude(p => p.Paths)
-                .Include(a => a.Product.Ammount)
-                .ToList()) ;
+                .Include(a => a.Product.Ammount));
+                 
         }
 
         public async Task ClearCart()

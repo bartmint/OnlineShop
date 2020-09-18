@@ -8,6 +8,6 @@ namespace OnlineShop.Domain.Interfaces
 {
     public interface IAmmountRepository
     {
-        Task<int> DeleteProduct(int id);
+        Task DeleteAmmount(int id);
     }
 }
