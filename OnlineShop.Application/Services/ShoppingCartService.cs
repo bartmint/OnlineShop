@@ -8,7 +8,6 @@ using OnlineShop.Domain.Models;
 using OnlineShop.Application.ViewModels;
 using OnlineShop.Application.ViewModels.CartItems;
 using AutoMapper;
-using OnlineShop.Application.Helpers.Refactors;
 using AutoMapper.QueryableExtensions;
 using System.Linq;
 
@@ -41,11 +40,9 @@ namespace OnlineShop.Application.Services
         public ListCartItemsVM GetShoppingCartItems()
         {
             ListCartItemsVM model = new ListCartItemsVM();
-            model.ShoppingCartTotalPayment = _shoppingCartRepository.GetShoppingCartTotal();
+           
             model.CartItems = (_shoppingCartRepository.GetShoppingCartItems().ProjectTo<CartItemForListVm>(_mapper.ConfigurationProvider)).ToList();
-
-
-
+            model.ShoppingCartTotalPayment = _shoppingCartRepository.GetShoppingCartTotal();
             model.TotalCartItems = model.CartItems.Count;
 
             return model;

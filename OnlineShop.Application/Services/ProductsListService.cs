@@ -1,8 +1,8 @@
-﻿using AutoMapper.QueryableExtensions;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using OnlineShop.Application.Helpers;
-using OnlineShop.Application.Helpers.Refactors;
 using OnlineShop.Application.Interfaces;
 using OnlineShop.Application.ViewModels.CartItems;
 using OnlineShop.Application.ViewModels.Product;
@@ -20,21 +20,22 @@ namespace OnlineShop.Application.Services
    public  class ProductsListService:IProductsListService
     {
         private readonly IProductsListRepository _repository;
+        private readonly IMapper _mapper;
 
-        public ProductsListService(IProductsListRepository repository)
+        public ProductsListService(IProductsListRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public ListProductsVM GetProducts(string sortOrder, string searchString, int? pageNumber, string currentFilter, string category)
         {
             const int pageSize = 5;
-            var items = _repository.GetProducts();
+            var items = _repository.GetProducts().Include(e=>e.Paths).AsQueryable();
             if (!String.IsNullOrEmpty(searchString))
             {
                 pageNumber=1;
-                items = items.Where(s => s.Model.Contains(searchString)).Include(e => e.Paths);
-                    //|| s.ProductionCompany.ToString().Contains(searchString)).Include(e => e.Paths);
+                items = items.Where(s => s.Model.Contains(searchString));
             }
             else
             {
@@ -52,7 +53,7 @@ namespace OnlineShop.Application.Services
             Paginate paginate = new Paginate(items.Count(),pageNumber.Value,pageSize);
             paginate.SearchString = searchString;
 
-            items = items.Skip(pageSize * (pageNumber.Value - 1)).Include(e=>e.Paths).Take(pageSize);//zmienic wyzej to ListAsync na ToList()
+            items = items.Skip(pageSize * (pageNumber.Value - 1)).Include(e=>e.Paths).Take(pageSize);
 
             switch (sortOrder)
             {
@@ -80,7 +81,8 @@ namespace OnlineShop.Application.Services
 
             ListProductsVM testPaginationVM = new ListProductsVM();
             testPaginationVM.Paginate = paginate;
-            testPaginationVM.Products = RefactorToProductForListVM.RefactorFrom(items.ToList());
+            testPaginationVM.Products = (items.ProjectTo<ProductForListVM>(_mapper.ConfigurationProvider)).ToList();
+
             testPaginationVM.Count = items.Count();
 
             return testPaginationVM;

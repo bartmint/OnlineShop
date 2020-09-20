@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Application.Interfaces;
-using OnlineShop.Application.Services;
+using System;
 
 namespace OnlineShop.UI.Controllers
 {
@@ -24,7 +20,9 @@ namespace OnlineShop.UI.Controllers
             ViewData["YearProductionSortParm"] = sortOrder == "Rok produkcji" ? "year_desc" : "Rok produkcji";
             ViewData["currentSearch"] = searchString; //obsluguje pole wyszukiwania
             ViewData["currentSort"] = sortOrder;//obsluguje filtry
-           
+
+            ViewData["CurrentFilter"] = searchString;
+
             var model = _productsListService.GetProducts(sortOrder, searchString, pageNumber ?? 1, currentFilter, category);
             return View(model);        
         }
@@ -35,7 +33,9 @@ namespace OnlineShop.UI.Controllers
             {
                 return View(model);
             }
-            return NotFound(404);
+            //Response.StatusCode = 404;
+            //return View("ProductNotFound", id.Value);
+            return View();
         }
     }
 }

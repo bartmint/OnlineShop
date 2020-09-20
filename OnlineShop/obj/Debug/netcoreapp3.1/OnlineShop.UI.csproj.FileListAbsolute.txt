@@ -181,3 +181,7 @@ C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\AutoMa
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Cart\Index.cshtml.g.cs
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Checkout\Index.cshtml.g.cs
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Products\Index.cshtml.g.cs
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Shared\NotFound.cshtml.g.cs
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\FluentValidation.dll
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\FluentValidation.AspNetCore.dll
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\FluentValidation.DependencyInjectionExtensions.dll

@@ -1,11 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "nzpjMpKQW9BJWbEW+uTjr6mCVxn0xhnqR0i5HwdmkvHtzHHYb0HqCXvDmmRUQxlaHv+jQXFM99IVit71jk9kxQ==",
+  "dgSpecHash": "jfMimxJvFRT2o1RmgvlfK6fEINTiwC2dMd3mV4/kTToN5GOmRaw4VHAjEyeZTIN46Ww5bXuBkPxGxdtVRDGeeA==",
   "success": true,
   "projectFilePath": "C:\\Users\\barte\\source\\repos\\OnlineShop\\OnlineShop.Application\\OnlineShop.Application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\barte\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
     "C:\\Users\\barte\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.0.1\\automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\fluentvalidation\\9.3.0-preview2\\fluentvalidation.9.3.0-preview2.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\fluentvalidation.aspnetcore\\9.3.0-preview2\\fluentvalidation.aspnetcore.9.3.0-preview2.nupkg.sha512",
+    "C:\\Users\\barte\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\9.3.0-preview2\\fluentvalidation.dependencyinjectionextensions.9.3.0-preview2.nupkg.sha512",
     "C:\\Users\\barte\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\barte\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\barte\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",

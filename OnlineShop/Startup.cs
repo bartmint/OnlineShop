@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -27,7 +28,7 @@ namespace OnlineShop
             ));
 
             services.AddApplication();
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddFluentValidation(fv=>fv.RunDefaultMvcValidationAfterFluentValidationExecutes=false);
             services.AddInfrastructure();
             
         }
@@ -40,8 +41,11 @@ namespace OnlineShop
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
                 app.UseHsts();
+                //app.UseExceptionHandler("/Error");
+                //app.UseStatusCodePages();
+                //app.UseStatusCodePagesWithReExecute("/Error/Index/{0}");
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();

@@ -20,7 +20,7 @@ namespace OnlineShop.Infrastructure.DAL
                     GraphicCard = "nvidia 2060",
                     Value = 2500,
                     ProductionYear = 2019,
-                    ScreenResolution = "21",
+                    ScreenResolution = 21,
                     Description = "blabla"
                 },
                 new Product
@@ -35,7 +35,7 @@ namespace OnlineShop.Infrastructure.DAL
                     GraphicCard = "nvidia 2060",
                     Value = 2500,
                     ProductionYear = 2019,
-                    ScreenResolution = "21",
+                    ScreenResolution = 2,
                     Description = "blabla"
                 },
                 new Product
@@ -50,7 +50,7 @@ namespace OnlineShop.Infrastructure.DAL
                     GraphicCard = "nvidia 2060",
                     Value = 2500,
                     ProductionYear = 2019,
-                    ScreenResolution = "21",
+                    ScreenResolution = 2,
                     Description = "blabla"
                 });
 

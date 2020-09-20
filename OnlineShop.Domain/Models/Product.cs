@@ -18,7 +18,7 @@ namespace OnlineShop.Domain.Models
         public Varranty Warranty { get; set; }
         public MemoryType MemoryType { get; set; }
         public int ProductionYear { get; set; }
-        public string ScreenResolution { get; set; }
+        public int ScreenResolution { get; set; }
         public  Ammount Ammount { get; set; }
         public virtual List<Image> Paths { get; set; }
         public Product()

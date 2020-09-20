@@ -329,6 +329,47 @@
           "lib/netstandard2.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll": {}
         }
       },
+      "FluentValidation/9.3.0-preview2": {
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.3.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        }
+      },
+      "FluentValidation.AspNetCore/9.3.0-preview2": {
+        "dependencies": {
+          "FluentValidation": "9.3.0-preview2",
+          "FluentValidation.DependencyInjectionExtensions": "9.3.0-preview2"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/FluentValidation.AspNetCore.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.3.0.0"
+          }
+        },
+        "compile": {
+          "lib/netcoreapp3.1/FluentValidation.AspNetCore.dll": {}
+        }
+      },
+      "FluentValidation.DependencyInjectionExtensions/9.3.0-preview2": {
+        "dependencies": {
+          "FluentValidation": "9.3.0-preview2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "5.0.0-preview.8.20407.11"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.3.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll": {}
+        }
+      },
       "Humanizer.Core/2.8.26": {
         "runtime": {
           "lib/netstandard2.0/Humanizer.dll": {
@@ -2720,6 +2761,9 @@
         "dependencies": {
           "AutoMapper": "10.0.0",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.0.1",
+          "FluentValidation": "9.3.0-preview2",
+          "FluentValidation.AspNetCore": "9.3.0-preview2",
+          "FluentValidation.DependencyInjectionExtensions": "9.3.0-preview2",
           "Microsoft.AspNetCore.Http": "2.2.2",
           "Microsoft.AspNetCore.Http.Extensions": "2.2.0",
           "Microsoft.AspNetCore.Session": "2.2.0",
@@ -4353,6 +4397,27 @@
       "sha512": "sha512-hhUzmc8Ld7wCuVHJFodsxtPmFqBAhB6nUNQUgaMF3uamQdxOLxntG0dwv+5ApC67GABa8Oay8MEYGg5IgVZP1Q==",
       "path": "automapper.extensions.microsoft.dependencyinjection/8.0.1",
       "hashPath": "automapper.extensions.microsoft.dependencyinjection.8.0.1.nupkg.sha512"
+    },
+    "FluentValidation/9.3.0-preview2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Aa/ZUDoxVAHd+d7plT+kCrDupi7WaE/nHKDiiyICIvEomXC9Urk/5vIpB0WZYZ9lukxetQw44oS/5S+kbU0M/Q==",
+      "path": "fluentvalidation/9.3.0-preview2",
+      "hashPath": "fluentvalidation.9.3.0-preview2.nupkg.sha512"
+    },
+    "FluentValidation.AspNetCore/9.3.0-preview2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0G4yiJzzqSotBnywzmdB+MFTSZ4kQPKSYyegt7q9L5GJ9PmuVBiPsJiC4Cn0tz2Uz5Fvkc9MDf3aZGRUfCdfPg==",
+      "path": "fluentvalidation.aspnetcore/9.3.0-preview2",
+      "hashPath": "fluentvalidation.aspnetcore.9.3.0-preview2.nupkg.sha512"
+    },
+    "FluentValidation.DependencyInjectionExtensions/9.3.0-preview2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-2V0mfO0ZktNpsdT8PM2b1WJgeJJ4aIGXz++Th8gfsLdraBF3SSeJCW3XG6ddoq0EdUc3cDSejPqCX9vdk1lZ1w==",
+      "path": "fluentvalidation.dependencyinjectionextensions/9.3.0-preview2",
+      "hashPath": "fluentvalidation.dependencyinjectionextensions.9.3.0-preview2.nupkg.sha512"
     },
     "Humanizer.Core/2.8.26": {
       "type": "package",
