@@ -1,0 +1,17 @@
+﻿.nav-links {
+    justify-content: space-around;
+    list-style: none;
+    width:30vh;
+    margin-left: 20vh;
+}
+
+.nav-link {
+    color: #5f5f79;
+    font-size: 18px;
+    text-decoration: none;
+    font-family: 'Raleway', sans-serif;
+}
+
+.nav-link:hover {
+    color: #5f5f79;
+}

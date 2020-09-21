@@ -7,12 +7,10 @@
 
     <script src="~/lib/jquery/dist/jquery.js"></script>
     @*<script src="~/lib/jquery-validate/jquery.validate.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>*@
+        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>*@
     @*sprawdzic breakpointem na metodzieLogin*@
-
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
-
     <link rel="stylesheet" href="~/css/Layout.css" />
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Montserrat&family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css" integrity="sha256-qvCL5q5O0hEpOm1CgOLQUuHzMusAZqDcAZL9ijqfOdI=" crossorigin="anonymous" />
@@ -20,7 +18,7 @@
 </head>
 <body>
     <header>
-        
+
         <nav>
             <ul class="nav-links">
                 <li><a class="nav-link" asp-action="Index" asp-controller="Home">Home</a></li>
@@ -28,14 +26,14 @@
                 <li><a class="nav-link" href="#">About us</a></li>
 
                 @*@await Component.InvokeAsync("LoginPanel")*@
-
+                @*<li class="right"><partial name="_LoginPartial" /></li>*@
 
             </ul>
 
         </nav>
-
+        <partial name="_LoginPartial" />
         <div class="cart">
-           @await Component.InvokeAsync("ShoppingCartSummary")
+            @await Component.InvokeAsync("ShoppingCartSummary")
         </div>
 
     </header>
@@ -76,7 +74,6 @@
 
 
 
-
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -91,6 +88,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
 
 
-  @RenderSection("Scripts", required: false)
+
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

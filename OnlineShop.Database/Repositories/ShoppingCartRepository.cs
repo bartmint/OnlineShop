@@ -17,7 +17,7 @@ namespace OnlineShop.Infrastructure.Repositories
     {
         private readonly ApplicationDb _ctx;
         private readonly ISessionSettings _session;
-        private static string ShoppingCartId { get; set; }
+        private string ShoppingCartId { get; set; }
         public IQueryable<ShoppingCartItem> ShoppingCartItems { get; set; }
 
 
@@ -25,12 +25,12 @@ namespace OnlineShop.Infrastructure.Repositories
         {
             _ctx = ctx;
             _session = session;
+            ShoppingCartId = _session.OnGet();
         }
 
         public void AddToCart(Product product, int quantity)
         {
             //setting Id
-            ShoppingCartId = _session.OnGet();
 
             //retrieve product from database
             //ShoppingCartId = GetCartId();
@@ -44,7 +44,7 @@ namespace OnlineShop.Infrastructure.Repositories
             {
                 cartItems = new ShoppingCartItem
                 {
-                    CartId=ShoppingCartId,
+                    CartId= ShoppingCartId,
                     Product=product,
                     Quantity=quantity,
                 };

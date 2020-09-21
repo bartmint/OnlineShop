@@ -1,6 +1,8 @@
 ﻿using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -26,10 +28,20 @@ namespace OnlineShop
 
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")
             ));
+            services.AddDefaultIdentity<UserData>(options =>
+           {
+               options.Password.RequiredLength = 5;
+               options.Password.RequireNonAlphanumeric = false;
+               options.Password.RequireUppercase = true;
+               options.Password.RequireDigit = false;
+           })
+                .AddEntityFrameworkStores<ApplicationDb>();
 
             services.AddApplication();
-            services.AddControllersWithViews().AddFluentValidation(fv=>fv.RunDefaultMvcValidationAfterFluentValidationExecutes=false);
+            //services.AddControllersWithViews().AddFluentValidation(fv=>fv.RunDefaultMvcValidationAfterFluentValidationExecutes=false);
+            services.AddControllersWithViews().AddFluentValidation();
             services.AddInfrastructure();
+            services.AddRazorPages();
             
         }
 
@@ -50,6 +62,7 @@ namespace OnlineShop
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseSession();
             app.UseEndpoints(endpoints =>
@@ -57,6 +70,7 @@ namespace OnlineShop
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }
