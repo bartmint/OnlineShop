@@ -18,17 +18,20 @@ namespace OnlineShop.Application.Services
         private readonly IShoppingCartRepository _shoppingCartRepository;
         private readonly IProductManager _productManager;
         private readonly IMapper _mapper;
+        private readonly IAmmountRepository _ammountRepository;
 
-        public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductManager productManager, IMapper mapper)
+        public ShoppingCartService(IShoppingCartRepository shoppingCartRepository, IProductManager productManager, IMapper mapper, IAmmountRepository ammountRepository)
         {
             _shoppingCartRepository = shoppingCartRepository;
             _productManager = productManager;
             _mapper = mapper;
+            _ammountRepository = ammountRepository;
         }
         public void AddToCart(int id)
         {
             int quantity = 1;
             var selectedProduct = _productManager.GetProductById(id);
+             _ammountRepository.RemoveOne(id);
              _shoppingCartRepository.AddToCart(selectedProduct, quantity);
         }
 

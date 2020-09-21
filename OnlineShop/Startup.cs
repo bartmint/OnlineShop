@@ -30,10 +30,11 @@ namespace OnlineShop
             ));
             services.AddDefaultIdentity<UserData>(options =>
            {
-               options.Password.RequiredLength = 5;
+               options.Password.RequiredLength = 8;
                options.Password.RequireNonAlphanumeric = false;
                options.Password.RequireUppercase = true;
-               options.Password.RequireDigit = false;
+               options.Password.RequireDigit = true;
+               options.SignIn.RequireConfirmedEmail = false;
            })
                 .AddEntityFrameworkStores<ApplicationDb>();
 

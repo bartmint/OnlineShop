@@ -30,18 +30,10 @@ namespace OnlineShop.Infrastructure.Utilities
                     _http.HttpContext.Session.SetString(SessionKeyName, Guid.NewGuid().ToString());
                 }
             }
-            else
-            {
-                if (!_http.HttpContext.User.Identity.IsAuthenticated)
-                {
-                    _http.HttpContext.Session.SetString(SessionKeyName, Guid.NewGuid().ToString());
-                }
-            }
-
-
 
             _http.HttpContext.Session.SetInt32(SessionKeyAge, 773);
             return _http.HttpContext.Session.GetString(SessionKeyName);
+
 
         }
     }

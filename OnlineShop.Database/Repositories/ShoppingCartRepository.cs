@@ -38,7 +38,7 @@ namespace OnlineShop.Infrastructure.Repositories
             var cartItems = 
                 _ctx.CartItems.FirstOrDefault(
                 c => c.Product.Id == product.Id
-                && c.CartId == ShoppingCartId);
+                && c.CartId == _session.OnGet());
             //create new product if no cart item exists
             if (cartItems == null)
             {
@@ -69,7 +69,7 @@ namespace OnlineShop.Infrastructure.Repositories
             var shoppingCartItem =
                 _ctx.CartItems.SingleOrDefault(
                     s => s.Product.Id == product.Id
-                    && s.CartId == ShoppingCartId);
+                    && s.CartId == _session.OnGet());
             var localAmount = 0;
             if (shoppingCartItem != null)
             {
@@ -92,7 +92,7 @@ namespace OnlineShop.Infrastructure.Repositories
             return ShoppingCartItems ?? (
                 ShoppingCartItems =
                 _ctx.CartItems
-                .Where(c => c.CartId == ShoppingCartId)
+                .Where(c => c.CartId == _session.OnGet())
                 .Include(s => s.Product)
                 .ThenInclude(p => p.Paths)
                 .Include(a => a.Product.Ammount));
