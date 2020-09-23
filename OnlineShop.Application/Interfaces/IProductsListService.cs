@@ -5,7 +5,7 @@ namespace OnlineShop.Application.Interfaces
 {
     public interface IProductsListService
     {
-        ListProductsVM GetProducts(string sortOrder, string searchString, int? pageNumber, string currentFilter, string category);
+        ListProductsVM GetProducts(string sortOrder, string searchString, int? pageNumber, string category);
        Product GetProductById(int id);
     }
 }

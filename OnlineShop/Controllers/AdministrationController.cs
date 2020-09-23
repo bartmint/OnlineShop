@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace OnlineShop.UI.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class AdministrationController : Controller
     {
         private readonly IProductManagerService _productManagerService;
@@ -22,14 +23,31 @@ namespace OnlineShop.UI.Controllers
         {
             _productManagerService = productManagerService;
         }
+        [Route("Administration/ManageProducts")]
         [HttpGet]
-        [CheckPermissions("Read")]
+        public IActionResult Index(int? pageNumber, string searchString,string currentFilter)
+        {
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewData["CurrentFilter"] = searchString;
+
+            var model = _productManagerService.GetProducts(pageNumber ?? 1, searchString);
+            return View(model);
+        }
+        [HttpGet]
         public IActionResult AddProduct()
         {
             return View();
         }
+
+        [Route("AddProduct")]
         [HttpPost]
-        
         public async Task<IActionResult> AddProduct(NewProductVM product)
         {
             if (ModelState.IsValid)
@@ -39,6 +57,7 @@ namespace OnlineShop.UI.Controllers
             }
             return View();
         }
+        [Route("UpdateProduct/{id}")]
         [HttpGet]
         public IActionResult UpdateProduct(int? id)//musi byc id bo przy kliknieciu przycisku update zwraca wartosc is invalid ''
         {

@@ -141,3 +141,7 @@ h2 {
 .nizej {
     margin-top: 10px;
 }
+.navbar {
+    padding: 0;
+    margin: 0;
+}

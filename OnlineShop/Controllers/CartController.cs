@@ -55,6 +55,6 @@ namespace OnlineShop.UI.Controllers
             await _shoppingCartService.ClearCart();
             return RedirectToAction("Index","Products");
         }
-        
+      
     }
 }

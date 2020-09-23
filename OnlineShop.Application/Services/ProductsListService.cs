@@ -28,19 +28,15 @@ namespace OnlineShop.Application.Services
             _mapper = mapper;
         }
 
-        public ListProductsVM GetProducts(string sortOrder, string searchString, int? pageNumber, string currentFilter, string category)
+        public ListProductsVM GetProducts(string sortOrder, string searchString, int? pageNumber, string category)
         {
-            const int pageSize = 5;
+            const int pageSize = 2;
             var items = _repository.GetProducts().Include(e=>e.Paths).AsQueryable();
             if (!String.IsNullOrEmpty(searchString))
             {
-                pageNumber=1;
                 items = items.Where(s => s.Model.Contains(searchString));
             }
-            else
-            {
-                searchString = currentFilter;
-            }
+            
             if (!String.IsNullOrEmpty(category))
             {
                 foreach (var prod in (Producent[])Enum.GetValues(typeof(Producent)))
@@ -51,9 +47,8 @@ namespace OnlineShop.Application.Services
             }
 
             Paginate paginate = new Paginate(items.Count(),pageNumber.Value,pageSize);
-            paginate.SearchString = searchString;
 
-            items = items.Skip(pageSize * (pageNumber.Value - 1)).Include(e=>e.Paths).Take(pageSize);
+            items = items.Skip(pageSize * (pageNumber.Value - 1)).Take(pageSize);
 
             switch (sortOrder)
             {

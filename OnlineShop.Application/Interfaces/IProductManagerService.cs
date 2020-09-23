@@ -14,5 +14,6 @@ namespace OnlineShop.Application.Interfaces
         Task<int> UpdateProduct(NewProductVM product);
         void RemoveItem(int id);
         public NewProductVM GetProduct(int id);
+        ListProductsVM GetProducts(int? pageNumber, string searchString);
     }
 }

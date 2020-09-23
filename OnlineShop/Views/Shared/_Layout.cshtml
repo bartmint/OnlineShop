@@ -3,13 +3,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - jakis beznadziejny sklep</title>
+    <title>@ViewData["Title"] - Sklep #</title>
 
-    <script src="~/lib/jquery/dist/jquery.js"></script>
-    @*<script src="~/lib/jquery-validate/jquery.validate.js"></script>
-        <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>*@
-    @*sprawdzic breakpointem na metodzieLogin*@
     <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" integrity="sha256-h20CPZ0QyXlBuAw7A+KluUYx/3pK+c7lYEpqLTlxjYQ=" crossorigin="anonymous" />
     <link rel="stylesheet" href="~/css/Layout.css" />
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2&family=Montserrat&family=Raleway&display=swap" rel="stylesheet">
@@ -24,12 +21,22 @@
                 <li><a class="nav-link" asp-action="Index" asp-controller="Home">Home</a></li>
                 <li><a class="nav-link" asp-action="Index" asp-controller="Products">Products</a></li>
                 <li><a class="nav-link" href="#">About us</a></li>
-
-                @*@await Component.InvokeAsync("LoginPanel")*@
-                @*<li class="right"><partial name="_LoginPartial" /></li>*@
-
+                <li class="navbar navbar-expand">
+                    @*class="navbar navbar-expand-lg"*@
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="/posts" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-target="#my-target">
+                                Manage
+                            </a>
+                            <div id="my-target" class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-action="Index" asp-controller="Administration">Products</a>
+                                <a class="dropdown-item">Users</a>
+                            </div>
+                        </div>
+                    }
+                </li>
             </ul>
-
         </nav>
         <partial name="_LoginPartial" />
         <div class="cart">

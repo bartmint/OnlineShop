@@ -36,7 +36,9 @@ namespace OnlineShop
                options.Password.RequireDigit = true;
                options.SignIn.RequireConfirmedEmail = false;
            })
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDb>();
+              
 
             services.AddApplication();
             //services.AddControllersWithViews().AddFluentValidation(fv=>fv.RunDefaultMvcValidationAfterFluentValidationExecutes=false);
@@ -73,6 +75,7 @@ namespace OnlineShop
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
+
         }
     }
 }

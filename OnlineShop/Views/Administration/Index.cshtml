@@ -1,0 +1,53 @@
+﻿@model OnlineShop.Application.ViewModels.Product.ListProductsVM
+
+    <div class="container mt-5 pt-5">
+        <form asp-action="Index" method="get">
+            <div class="row">
+                <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" />
+                <input type="submit" value="Wyszukaj" />
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Model</th>
+                                <th scope="col">Value</th>
+                                <th scope="col">Producent</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Products)
+                            {
+                                <tr>
+                                    <th scope="row">@item.ProductId</th>
+                                    <td>@item.Model</td>
+                                    <td>@item.Value</td>
+                                    <td>@item.Producent</td>
+                                    <td>
+                                        <a type="button" class="btn btn-primary" asp-controller="Products" asp-action="ProductDetails" asp-route-id=@item.ProductId><i class="far fa-eye"></i></a>
+                                        <a type="button" class="btn btn-success" asp-controller="Administration" asp-action="UpdateProduct" asp-route-id=@item.ProductId><i class="fas fa-edit"></i></a>
+                                        <a type="button" class="btn btn-danger" asp-controller="Administration" asp-action="RemoveItem" asp-route-id=@item.ProductId><i class="far fa-trash-alt"></i></a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            @{
+                                @for (int i = 1; i < Model.Paginate.TotalPages + 1; i++)
+                                {
+                                    <li class="page-item"><a class="page-link" asp-action="Index" asp-route-pageNumber=@i
+                                                             asp-route-currentFilter="@ViewData["CurrentFilter"]"
+                                                             >@i</a></li>
+                                }
+                            }
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </form>
+    </div>

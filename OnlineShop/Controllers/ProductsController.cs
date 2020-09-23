@@ -18,12 +18,24 @@ namespace OnlineShop.UI.Controllers
             ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["PriceSortParm"] = sortOrder == "Price" ? "price_desc" : "Price";
             ViewData["YearProductionSortParm"] = sortOrder == "Rok produkcji" ? "year_desc" : "Rok produkcji";
-            ViewData["currentSearch"] = searchString; //obsluguje pole wyszukiwania
+            //ViewData["currentSearch"] = searchString; //obsluguje pole wyszukiwania
             ViewData["currentSort"] = sortOrder;//obsluguje filtry
-
+            ViewData["CurrentCategory"] = category;//przetrzymuje informacje o aktualnym wyszukiwanie w html
             ViewData["CurrentFilter"] = searchString;
 
-            var model = _productsListService.GetProducts(sortOrder, searchString, pageNumber ?? 1, currentFilter, category);
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            
+            
+
+
+            var model = _productsListService.GetProducts(sortOrder, searchString, pageNumber ?? 1, category);
             return View(model);        
         }
         public IActionResult ProductDetails(int? id)
