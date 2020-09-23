@@ -55,7 +55,6 @@ namespace OnlineShop.Infrastructure.Repositories
             
                 _ctx.RemoveRange(items);
                 await _ctx.SaveChangesAsync();
-            
         }
 
 

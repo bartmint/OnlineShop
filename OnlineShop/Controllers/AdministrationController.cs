@@ -40,6 +40,24 @@ namespace OnlineShop.UI.Controllers
             var model = _productManagerService.GetProducts(pageNumber ?? 1, searchString);
             return View(model);
         }
+        [Route("Administration/ManageOrders")]
+        [HttpGet]
+        public IActionResult Orders(int? pageNumber, string searchString, string currentFilter)
+        {
+            if (searchString != null)
+            {
+                pageNumber = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+            ViewData["CurrentFilter"] = searchString;
+
+            var model = _productManagerService.GetProducts(pageNumber ?? 1, searchString);
+            //return View(model);
+            return View();
+        }
         [HttpGet]
         public IActionResult AddProduct()
         {

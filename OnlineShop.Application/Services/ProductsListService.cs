@@ -30,7 +30,7 @@ namespace OnlineShop.Application.Services
 
         public ListProductsVM GetProducts(string sortOrder, string searchString, int? pageNumber, string category)
         {
-            const int pageSize = 2;
+            const int pageSize = 6;
             var items = _repository.GetProducts().Include(e=>e.Paths).AsQueryable();
             if (!String.IsNullOrEmpty(searchString))
             {

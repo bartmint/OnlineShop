@@ -25,10 +25,10 @@ namespace OnlineShop.Infrastructure.Utilities
                 {
                     _http.HttpContext.Session.SetString(SessionKeyName, _http.HttpContext.User.Identity.Name);
                 }
-                else
-                {
-                    _http.HttpContext.Session.SetString(SessionKeyName, Guid.NewGuid().ToString());
-                }
+                //else
+                //{
+                //    _http.HttpContext.Session.SetString(SessionKeyName, Guid.NewGuid().ToString());
+                //}
             }
 
             _http.HttpContext.Session.SetInt32(SessionKeyAge, 773);

@@ -1,5 +1,9 @@
 ﻿@model int
-@if (Model > 0)
+@using Microsoft.AspNetCore.Identity
+@using OnlineShop.Infrastructure
+@inject SignInManager<UserData> SignInManager
+
+@if (Model > 0 && SignInManager.IsSignedIn(User))
 {
     <a asp-controller="Cart" asp-action="Index">
         <i class="fas fa-shopping-cart"></i>

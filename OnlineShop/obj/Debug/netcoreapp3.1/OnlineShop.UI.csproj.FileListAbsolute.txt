@@ -193,5 +193,5 @@ C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\Micros
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\OnlineShop.UI.csproj.CoreCompileInputs.cache
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\OnlineShop.UI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\OnlineShop.UI.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\ManageProducts\Default.cshtml.g.cs
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Administration\Index.cshtml.g.cs
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Administration\Orders.cshtml.g.cs
