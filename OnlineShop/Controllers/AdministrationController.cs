@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using OnlineShop.Application.Interfaces;
@@ -6,6 +7,7 @@ using OnlineShop.Application.Services;
 using OnlineShop.Application.ViewModels;
 using OnlineShop.Application.ViewModels.Product;
 using OnlineShop.Domain.Interfaces;
+using OnlineShop.UI.Filters;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,11 +23,13 @@ namespace OnlineShop.UI.Controllers
             _productManagerService = productManagerService;
         }
         [HttpGet]
+        [CheckPermissions("Read")]
         public IActionResult AddProduct()
         {
             return View();
         }
         [HttpPost]
+        
         public async Task<IActionResult> AddProduct(NewProductVM product)
         {
             if (ModelState.IsValid)

@@ -37,6 +37,7 @@
                 <h2 class="h2_list_view">@item.Producent</h2>
                 <p class="price">@item.Model</p>
                 <p class="price">@item.Value.ToString("c")</p>
+                
                 <a asp-action="AddToShoppingCart" class="btn_in_oneitem" asp-controller="Cart" asp-route-id="@item.ProductId">Add to Cart</a>
             </div>
         </a>

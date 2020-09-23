@@ -7,7 +7,7 @@ namespace OnlineShop.Domain.Interfaces
 {
     public interface IShoppingCartRepository
     {
-        void AddToCart(Product product, int quantity);
+        Task AddToCart(Product product, int quantity);
         int RemoveFromCart(Product product);
         IQueryable<ShoppingCartItem> GetShoppingCartItems();
         Task ClearCart();

@@ -188,7 +188,8 @@ C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\Micros
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
+C:\Users\barte\source\repos\OnlineShop\OnlineShop\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.Google.dll
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\OnlineShop.UI.csproj.CoreCompileInputs.cache
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\OnlineShop.UI.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\OnlineShop.UI.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\barte\source\repos\OnlineShop\OnlineShop\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginPartial.cshtml.g.cs

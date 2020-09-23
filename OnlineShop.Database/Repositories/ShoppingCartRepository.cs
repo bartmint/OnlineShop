@@ -28,17 +28,17 @@ namespace OnlineShop.Infrastructure.Repositories
             ShoppingCartId = _session.OnGet();
         }
 
-        public void AddToCart(Product product, int quantity)
+        public async Task  AddToCart(Product product, int quantity)
         {
             //setting Id
 
             //retrieve product from database
             //ShoppingCartId = GetCartId();
 
-            var cartItems = 
-                _ctx.CartItems.FirstOrDefault(
+            var cartItems = await
+                _ctx.CartItems.FirstOrDefaultAsync(
                 c => c.Product.Id == product.Id
-                && c.CartId == _session.OnGet());
+                && c.CartId == ShoppingCartId);
             //create new product if no cart item exists
             if (cartItems == null)
             {
@@ -54,7 +54,7 @@ namespace OnlineShop.Infrastructure.Repositories
             {
                 cartItems.Quantity++;
             }
-            _ctx.SaveChanges();
+            await _ctx.SaveChangesAsync();
         }
         public void Dispose()
         {

@@ -27,12 +27,12 @@ namespace OnlineShop.Application.Services
             _mapper = mapper;
             _ammountRepository = ammountRepository;
         }
-        public void AddToCart(int id)
+        public async Task AddToCart(int id)
         {
             int quantity = 1;
             var selectedProduct = _productManager.GetProductById(id);
-             _ammountRepository.RemoveOne(id);
-             _shoppingCartRepository.AddToCart(selectedProduct, quantity);
+            await _ammountRepository.RemoveOne(id);
+            await _shoppingCartRepository.AddToCart(selectedProduct, quantity);
         }
 
         public async Task ClearCart()

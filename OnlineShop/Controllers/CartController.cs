@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 //using System.Web.Providers.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using OnlineShop.Infrastructure.Repositories;
 
 namespace OnlineShop.UI.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         private readonly IShoppingCartService _shoppingCartService;
@@ -28,11 +30,11 @@ namespace OnlineShop.UI.Controllers
             ViewBag.Cart = "Your Cart is empty";
             return View();
         }
-        public  IActionResult AddToShoppingCart(int? id)
+        public async Task<IActionResult> AddToShoppingCart(int? id)
         {
             if (id.HasValue)
             {
-                _shoppingCartService.AddToCart(id.Value);
+                await _shoppingCartService.AddToCart(id.Value);
                 //return RedirectToAction("Index","Home");//zmienic na liste produktow
                 return RedirectToAction("Index");
             }

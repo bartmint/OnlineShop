@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineShop.Application.Interfaces;
 using OnlineShop.Domain.Models;
 
 namespace OnlineShop.UI.Controllers
 {
+    [Authorize]
     public class CheckoutController : Controller
     {
         private readonly ICheckoutService _checkoutService;

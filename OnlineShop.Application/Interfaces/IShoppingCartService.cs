@@ -10,7 +10,7 @@ namespace OnlineShop.Application.Interfaces
 {
     public interface IShoppingCartService
     {
-        void AddToCart(int id);
+        Task AddToCart(int id);
         int RemoveFromCart(int id);
         ListCartItemsVM GetShoppingCartItems();
         Task ClearCart();
