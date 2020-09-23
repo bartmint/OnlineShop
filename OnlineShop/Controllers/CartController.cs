@@ -20,9 +20,9 @@ namespace OnlineShop.UI.Controllers
 
         public CartController(IShoppingCartService shoppingCartService)=> _shoppingCartService = shoppingCartService;
         
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var model = _shoppingCartService.GetShoppingCartItems();
+            var model =await _shoppingCartService.GetShoppingCartItems();
             if (model.CartItems.Count != 0)
             {
                 return View(model);
@@ -41,18 +41,18 @@ namespace OnlineShop.UI.Controllers
             return Json("Add to shopping cart -> failed");
             
         }
-        public IActionResult RemoveFromCart(int? Id)//pozmieniac na male id
+        public async Task<IActionResult> RemoveFromCart(int? Id)//pozmieniac na male id
         {
             if (Id.HasValue)
             {
-                _shoppingCartService.RemoveFromCart(Id.Value);
+                await _shoppingCartService.RemoveFromCart(Id.Value);
                 return RedirectToAction("Index");
             }
             return Json("RemoveFromShoppingCart -> failed");
         }
-        public IActionResult ClearShoppingCart()
+        public async Task<IActionResult> ClearShoppingCart()
         {
-            _shoppingCartService.ClearCart();
+            await _shoppingCartService.ClearCart();
             return RedirectToAction("Index","Products");
         }
         

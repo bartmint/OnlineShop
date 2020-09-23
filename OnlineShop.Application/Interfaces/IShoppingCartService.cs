@@ -11,9 +11,9 @@ namespace OnlineShop.Application.Interfaces
     public interface IShoppingCartService
     {
         Task AddToCart(int id);
-        int RemoveFromCart(int id);
-        ListCartItemsVM GetShoppingCartItems();
+        Task<int> RemoveFromCart(int id);
+        Task<ListCartItemsVM> GetShoppingCartItems();
         Task ClearCart();
-        decimal GetShoppingCartTotal();
+        Task<decimal> GetShoppingCartTotal();
     }
 }

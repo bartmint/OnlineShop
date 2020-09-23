@@ -64,10 +64,10 @@ namespace OnlineShop.Infrastructure.Repositories
             }
         }
 
-        public int RemoveFromCart(Product product)
+        public async Task<int> RemoveFromCart(Product product)
         {
-            var shoppingCartItem =
-                _ctx.CartItems.SingleOrDefault(
+            var shoppingCartItem =await
+                _ctx.CartItems.SingleOrDefaultAsync(
                     s => s.Product.Id == product.Id
                     && s.CartId == _session.OnGet());
             var localAmount = 0;
@@ -83,7 +83,7 @@ namespace OnlineShop.Infrastructure.Repositories
                     _ctx.CartItems.Remove(shoppingCartItem);
                 }
             }
-            _ctx.SaveChanges();
+            await _ctx.SaveChangesAsync();
             return localAmount;
         }
 
@@ -109,11 +109,11 @@ namespace OnlineShop.Infrastructure.Repositories
            await _ctx.SaveChangesAsync();
         }
 
-        public decimal GetShoppingCartTotal()
+        public async Task<decimal> GetShoppingCartTotal()
         {
-            var total = _ctx.CartItems
+            var total =await _ctx.CartItems
                 .Where(s => s.CartId == ShoppingCartId)
-                .Select(s => s.Product.Value * s.Quantity).Sum();
+                .Select(s => s.Product.Value * s.Quantity).SumAsync();
             return total;
         }
         public async Task<int> GetShoppingCartAmmount()

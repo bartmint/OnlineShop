@@ -40,26 +40,26 @@ namespace OnlineShop.Application.Services
            await _shoppingCartRepository.ClearCart();
         }
 
-        public ListCartItemsVM GetShoppingCartItems()
+        public async Task<ListCartItemsVM> GetShoppingCartItems()
         {
             ListCartItemsVM model = new ListCartItemsVM();
            
             model.CartItems = (_shoppingCartRepository.GetShoppingCartItems().ProjectTo<CartItemForListVm>(_mapper.ConfigurationProvider)).ToList();
-            model.ShoppingCartTotalPayment = _shoppingCartRepository.GetShoppingCartTotal();
+            model.ShoppingCartTotalPayment =await _shoppingCartRepository.GetShoppingCartTotal();
             model.TotalCartItems = model.CartItems.Count;
 
             return model;
         }
 
-        public decimal GetShoppingCartTotal()
+        public async Task<decimal> GetShoppingCartTotal()
         {
-            return _shoppingCartRepository.GetShoppingCartTotal();
+            return await _shoppingCartRepository.GetShoppingCartTotal();
         }
 
-        public int RemoveFromCart(int id)
+        public async Task<int> RemoveFromCart(int id)
         {
             var selectedProduct = _productManager.GetProductById(id);
-            return _shoppingCartRepository.RemoveFromCart(selectedProduct);
+            return await _shoppingCartRepository.RemoveFromCart(selectedProduct);
         }
 
        

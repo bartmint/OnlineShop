@@ -8,10 +8,10 @@ namespace OnlineShop.Domain.Interfaces
     public interface IShoppingCartRepository
     {
         Task AddToCart(Product product, int quantity);
-        int RemoveFromCart(Product product);
+        Task<int> RemoveFromCart(Product product);
         IQueryable<ShoppingCartItem> GetShoppingCartItems();
         Task ClearCart();
-        decimal GetShoppingCartTotal();
+        Task<decimal> GetShoppingCartTotal();
         Task<int> GetShoppingCartAmmount();
     }
 }
