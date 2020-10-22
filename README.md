@@ -14,3 +14,4 @@
 - buy/add/remove products from cart
 - CRUD operations by admin
 - filters/paginate/sort products
+- add completed orders to database
