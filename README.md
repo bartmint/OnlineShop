@@ -1,5 +1,5 @@
 # General Info
-- This is Asp net core online shop.
+- This is Asp net core online shop using repository-service pattern.
 ## Technologies
 - ASP NET CORE
 - MVC,
