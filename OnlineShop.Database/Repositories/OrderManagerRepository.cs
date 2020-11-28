@@ -15,9 +15,7 @@ namespace OnlineShop.Infrastructure.Repositories
         {
             _ctx = ctx;
         }
-        //znalezc zamowienie
-        public OrderDetail GetOrderById(string id)
-        {
-        } 
+        
+       
     }
 }
